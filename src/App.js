@@ -1,17 +1,21 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import GoogleAuth from './Components/GoogleAuth/Signin';
+import Header from './Components/Header';
 import MainPage from './Components/MainPage';
-
+import Signin from './Components/Signin';
+import { AuthContextProvider } from './Context/authContext';
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path='/auth' element={ <GoogleAuth /> } />
-        <Route path='/' element={ <MainPage /> } />
-      </Routes>
-    </>
+    <div>
+      <Header />
+      <AuthContextProvider>
+        <Routes>
+          <Route path='/' element={<MainPage />} />
+          <Route path='/signin' element={<Signin />} />
+        </Routes>
+      </AuthContextProvider>
+    </div>
   );
 }
 
