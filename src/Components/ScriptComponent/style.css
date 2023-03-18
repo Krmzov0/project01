@@ -1,0 +1,12 @@
+.scriptComponent::after{
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 85%;
+    background: #FDCA40;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}

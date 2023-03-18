@@ -3,6 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 import MainPage from './Components/MainPage'; 
 import { AuthContextProvider } from './Context/authContext';
 import SideBar from './Components/Sidebar';
+import Copywriting from './Components/Copywriting';
+import UGCVideos from './Components/UGCVideos'
+import Voiceovers from './Components/Voiceovers'
+import VideoEditing from './Components/VideoEditing'
+import AdLaunch from './Components/AdLaunch'
 
 function App() {
   return (
@@ -11,6 +16,11 @@ function App() {
       <AuthContextProvider>
           <Routes>
             <Route path='/' element={<MainPage />} />
+            <Route path='/copywriting' element={<Copywriting />} />
+            <Route path='/ugc-videos' element={<UGCVideos />} />
+            <Route path='/voiceovers' element={<Voiceovers />} />
+            <Route path='/video-editing' element={<VideoEditing />} />
+            <Route path='/ad-launch' element={<AdLaunch />} />
           </Routes>
       </AuthContextProvider>
     </div>

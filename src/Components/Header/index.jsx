@@ -23,7 +23,7 @@ function Header() {
 
     return (
         <>
-            <div className='h-max px-12 py-9 flex bg-[#121212] justify-end items-center border-b border-[#3B3B3B] '>
+            <div className='h-max px-12 xl:py-6 2xl:py-9 flex bg-[#121212] justify-end items-center border-b border-[#3B3B3B] '>
 
                 <div className=' h-full select-none'>
                     {user?.displayName ? <h3 className='cursor-pointer flex items-center gap-x-2 text-xl text-[#DBDBDB]' >{user?.displayName}</h3>  :  <button className='text-xl text-[#FDCA40] border-[#3B3B3B] rounded-md' onClick={handleGoogleSignIn}>Sign in with Google</button>}
