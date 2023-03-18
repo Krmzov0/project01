@@ -1,0 +1,19 @@
+.sideLink::after{
+    content: "";
+    position: absolute;
+    left: -27px;
+    width: 4px;
+    /* border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; */
+    height: 100%;
+    top: 0;
+    background: #FDCA40;
+    transform: scaleX(0);
+    transform-origin: left;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    transition: .1s ease-out;
+}
+.sideLink:hover::after{
+    transform: scaleX(1);
+}

@@ -1,19 +1,17 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Header from './Components/Header';
-import MainPage from './Components/MainPage';
-import Signin from './Components/Signin';
+import MainPage from './Components/MainPage'; 
 import { AuthContextProvider } from './Context/authContext';
+import SideBar from './Components/Sidebar';
 
 function App() {
   return (
-    <div>
-      <Header />
+    <div className='flex'>
+      <SideBar />
       <AuthContextProvider>
-        <Routes>
-          <Route path='/' element={<MainPage />} />
-          <Route path='/signin' element={<Signin />} />
-        </Routes>
+          <Routes>
+            <Route path='/' element={<MainPage />} />
+          </Routes>
       </AuthContextProvider>
     </div>
   );
