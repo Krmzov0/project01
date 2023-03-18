@@ -18,12 +18,12 @@ function SideBar() {
 
     return (
         <>
-            <div className='relative left-0 w-96 h-screen bg-[#121212] flex flex-col justify-start border-r border-[#3B3B3B]'>
+            <div className='relative border left-0 w-96 h-screen bg-[#121212] flex flex-col justify-start border-r border-[#3B3B3B]'>
                 <h1 className='text-[#fff] text-3xl px-7 py-8 font-light border-b border-[#3B3B3B]'>WebApp</h1>
 
-                <div className='h-full px-7  relative top-0 flex flex-col justify-between py-12'>
+                <div className=' px-7 h-full relative top-0 flex flex-col justify-between py-12'>
                     <div className='flex flex-col gap-y-7'>
-                        <h1 className='text-lg tracking-wide text-[#B4B4B4] mb-3'>MENU</h1>
+                        <h1 className='text-lg tracking-wide text-[#B4B4B4]'>MENU</h1>
                         <Link className='text-xl text-[#FDCA40] sideLink relative gap-x-5 flex items-center' to='/'><Home size="32" color="#FDCA40"/> Dashboard</Link>
                         <Link className='text-xl text-[#DBDBDB] sideLink relative gap-x-5 flex items-center' to='/copywriting'><Keyboard size="32" color="#dbdbdb"/> Copywriting</Link>
                         <Link className='text-xl text-[#DBDBDB] sideLink relative gap-x-5 flex items-center' to='/ugc-videos'><VideoSquare size="32" color="#dbdbdb"/> UGC Videos</Link>
@@ -35,7 +35,7 @@ function SideBar() {
                     </div>
 
                     <div className='flex flex-col gap-y-7'>
-                        <h1 className='text-lg text-[#B4B4B4] mb-3'>GENERAL</h1>
+                        <h1 className='text-lg text-[#B4B4B4]'>GENERAL</h1>
 
                         <div className='gap-x-5 flex items-center relative sideLink'><User size="32" color="#dbdbdb" /> <Link className='text-xl text-[#DBDBDB] flex items-center' to='/account'>Account</Link></div>
                         <div className='gap-x-5 flex items-center relative sideLink' onClick={handleSignOut}><LogoutCurve size="32" color="#dbdbdb" /> <Link className='text-xl text-[#DBDBDB] flex items-center'>Logout</Link></div>
