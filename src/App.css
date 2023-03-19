@@ -1,0 +1,10 @@
+.scriptList::-webkit-scrollbar {
+    width: 2px;
+}
+.scriptList::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+.scriptList::-webkit-scrollbar-thumb {
+        background: #FDCA40;
+}   

@@ -23,7 +23,7 @@ function SideBar() {
 
                 <div className='px-7 h-full relative top-0 flex flex-col justify-between xl:gap-y-4 2xl:gap-y-0 xl:py-8 2xl:py-12'>
                     <div className='flex flex-col gap-y-7'>
-                        <h1 className='text-lg tracking-wide text-[#B4B4B4]'>MENU</h1>
+                        <h1 className='text-md font-medium tracking-wide text-[#B4B4B4]'>MENU</h1>
                         <Link className=' xl:text-lg 2xl:text-xl text-[#FDCA40] sideLink relative gap-x-5 flex items-center' to='/'><Home className='xl:w-7 2xl:w-max' size="32" color="#FDCA40"/> Dashboard</Link>
                         <Link className=' xl:text-lg 2xl:text-xl text-[#DBDBDB] sideLink relative gap-x-5 flex items-center' to='/copywriting'><Keyboard className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb"/> Copywriting</Link>
                         <Link className=' xl:text-lg 2xl:text-xl text-[#DBDBDB] sideLink relative gap-x-5 flex items-center' to='/ugc-videos'><VideoSquare className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb"/> UGC Videos</Link>
@@ -35,7 +35,7 @@ function SideBar() {
                     </div>
 
                     <div className='flex flex-col gap-y-7'>
-                        <h1 className='text-lg text-[#B4B4B4]'>GENERAL</h1>
+                        <h1 className='text-md font-medium tracking-wide text-[#B4B4B4]'>GENERAL</h1>
 
                         <div className='gap-x-5 flex items-center relative sideLink'><User className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb" /> <Link className=' xl:text-lg 2xl:text-xl text-[#DBDBDB] flex items-center' to='/account'>Account</Link></div>
                         <div className='gap-x-5 flex items-center relative sideLink' onClick={handleSignOut}><LogoutCurve className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb" /> <Link className=' xl:text-lg 2xl:text-xl text-[#DBDBDB] flex items-center'>Logout</Link></div>

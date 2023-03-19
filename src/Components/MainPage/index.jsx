@@ -1,4 +1,4 @@
-import { AddSquare } from 'iconsax-react';
+import { AddSquare, TaskSquare } from 'iconsax-react';
 import React from 'react'
 import { UserAuth } from '../../Context/authContext'
 import Header from '../Header/';
@@ -14,9 +14,9 @@ function MainPage() {
 
         <div className='px-12 py-12'>
           <div className='relative flex justify-between items-center'>
-            <div>
+            <div className='flex flex-col gap-y-5'>
               {user?.displayName ? <h1 className='text-4xl font-thin text-[#fff] '>Welcome, {user.displayName}</h1> : <h1 className='text-4xl font-thin text-[#fff]'>Welcome, User</h1>}
-              <h3 className='text-2xl light text-[#B4B4B4]'>{user?.email}</h3>
+              <h3 className='text-xl text-[#B4B4B4] '>Let's do your best today, and get work effectiveness <br /> <h3 className='flex items-center gap-x-3'> for all your team members in the company <TaskSquare size="23" color="#FDCA40" /></h3></h3>
             </div>
 
             <div>
