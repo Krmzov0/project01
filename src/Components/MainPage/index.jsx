@@ -12,7 +12,7 @@ function MainPage() {
       <div className='relative top-0 w-full'>
         <Header />
 
-        <div className='px-12 py-12'>
+        <div className='px-12 py-12 hidden'>
           <div className='relative flex justify-between items-center'>
             <div className='flex flex-col gap-y-5'>
               {user?.displayName ? <h1 className='text-4xl font-thin text-[#fff] '>Welcome, {user.displayName}</h1> : <h1 className='text-4xl font-thin text-[#fff]'>Welcome, User</h1>}

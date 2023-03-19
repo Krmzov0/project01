@@ -18,8 +18,8 @@ function SideBar() {
 
     return (
         <>
-            <div className='relative left-0 w-96 xl:h-full 2xl:h-screen  bg-[#121212] flex flex-col justify-start border-r border-[#3B3B3B]'>
-                <h1 className='text-[#fff] text-3xl px-7 xl:py-5 2xl:py-8 font-light border-b border-[#3B3B3B]'>WebApp</h1>
+            <div className='sm:relative hidden left-0 w-96 xl:h-full 2xl:h-screen  bg-[#121212] flex flex-col justify-start border-r border-[#3B3B3B]'>
+                <h1 className='sm:flex hidden text-[#fff] text-3xl px-7 xl:py-5 2xl:py-8 font-light border-b border-[#3B3B3B]'>WebApp</h1>
 
                 <div className='px-7 h-full relative top-0 flex flex-col justify-between xl:gap-y-4 2xl:gap-y-0 xl:py-8 2xl:py-12'>
                     <div className='flex flex-col gap-y-7'>
