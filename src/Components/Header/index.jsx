@@ -42,9 +42,9 @@ function Header() {
 
   return (
     <>
-      <div className=' py-8 px-8 sm:px-12 xl:py-6 sm:py-9 flex bg-transparent sm:bg-[#121212] justify-end items-center border-0 sm:border-b border-[#3B3B3B] '>
+      <div className=' py-8 px-5 sm:px-12 xl:py-6 2xl:py-9 flex bg-transparent sm:bg-[#121212] justify-end items-center border-0 sm:border-b border-[#3B3B3B] '>
         <div className=' h-full select-none flex w-full justify-between sm:justify-end items-center'>
-          <h1 className='sm:hidden flex text-2xl text-[#dbdbdb] '>WebApp</h1>
+          <h1 className='sm:hidden flex text-3xl text-[#dbdbdb] '>WebApp</h1>
           <Category onClick={handleMenuToggle} className='sm:hidden flex' size="32" color="#dbdbdb" />
           {user?.displayName ? <h3 className='hidden sm:flex cursor-pointer items-center gap-x-2 text-xl text-[#DBDBDB]' >{user?.displayName}</h3> : <button className='hidden sm:flex text-xl text-[#FDCA40] border-[#3B3B3B] rounded-md' onClick={handleGoogleSignIn}>Sign in with Google</button>}
         </div>
@@ -53,15 +53,15 @@ function Header() {
 
       {menuToggle && (<motion.div className='absolute top-0 z-50' initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} ><div className='z-50 sm:hidden absolute top-0 left-0 w-screen h-screen xl:h-full 2xl:h-screen  bg-[#121212] flex flex-col justify-evenly border-r border-[#3B3B3B]'>
 
-        <div className=' py-8 px-8 relative sm:px-12 xl:py-6 sm:py-9 flex bg-transparent sm:bg-[#121212] justify-end items-center '>
+        <div className=' py-8 px-5 relative sm:px-12 xl:py-6 sm:py-9 flex bg-transparent sm:bg-[#121212] justify-end items-center '>
           <div className=' h-full select-none flex w-full justify-between sm:justify-end items-center'>
-            <h1 className='sm:hidden flex text-2xl text-[#dbdbdb] '>WebApp</h1>
+            <h1 className='sm:hidden flex text-3xl text-[#dbdbdb] '>WebApp</h1>
             <button onClick={handleMenuToggle} ><CloseCircle size="35" color="#dbdbdb" /></button>
             {user?.displayName ? <h3 className='hidden sm:flex cursor-pointer items-center gap-x-2 text-xl text-[#DBDBDB]' >{user?.displayName}</h3> : <button className='hidden sm:flex text-xl text-[#FDCA40] border-[#3B3B3B] rounded-md' onClick={handleGoogleSignIn}>Sign in with Google</button>}
           </div>
         </div>
 
-        <div className='py-3 px-8 gap-y-14 h-full sm:hidden relative top-0 flex flex-col justify-start xl:gap-y-4 2xl:gap-y-0 xl:py-8 2xl:py-12'>
+        <div className='py-0 px-5 pb-8 gap-y-14 h-full sm:hidden relative top-0 flex flex-col justify-start xl:gap-y-4 2xl:gap-y-0 xl:py-8 2xl:py-12'>
           <div className='flex flex-col gap-y-7'>
             <h1 className='text-md font-medium tracking-wide text-[#B4B4B4]'>MENU</h1>
             <Link className=' text-2xl text-[#FDCA40] sideLink relative gap-x-5 flex items-center' to='/'><Home className='xl:w-7 2xl:w-max' size="32" color="#FDCA40" /> Dashboard</Link>
