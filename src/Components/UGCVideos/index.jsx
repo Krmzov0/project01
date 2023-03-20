@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from '../Header/';
-import ScriptComponent from '../ScriptComponent';
 import { ArrowRight2, AddSquare } from 'iconsax-react'
 
 function UGCVideos() {
@@ -37,10 +36,6 @@ function UGCVideos() {
                     </div>
 
                     <div>
-                        <ScriptComponent />
-                        <ScriptComponent />
-                        <ScriptComponent />
-                        <ScriptComponent />
                     </div>
                 </div>
 
