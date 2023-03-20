@@ -8,6 +8,7 @@ import UGCVideos from './Components/UGCVideos'
 import Voiceovers from './Components/Voiceovers'
 import VideoEditing from './Components/VideoEditing'
 import AdLaunch from './Components/AdLaunch'
+import CreateSript from './Components/CreateScript';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path='/voiceovers' element={<Voiceovers />} />
             <Route path='/video-editing' element={<VideoEditing />} />
             <Route path='/ad-launch' element={<AdLaunch />} />
+            <Route path='/create-script' element={<CreateSript />} />
           </Routes>
       </AuthContextProvider>
     </div>
