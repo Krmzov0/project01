@@ -15,7 +15,7 @@ function MainPage() {
         <div className='px-5 sm:px-8 py-8'>
           <div className='relative gap-y-4 sm:gap-y-0 flex sm:flex-row flex-col justify-between items-stretch sm:items-center'>
             <div className='flex flex-col gap-y-5'>
-              {user?.displayName ? <h1 className='text-2xl sm:text-4xl font-thin text-[#fff] '>Welcome, {user.displayName}</h1> : <h1 className='text-4xl font-thin text-[#fff]'>Welcome, User</h1>}
+              {user?.displayName ? <h1 className='text-3xl sm:text-4xl font-thin text-[#fff] '>Welcome, {user.displayName}</h1> : <h1 className='text-4xl font-thin text-[#fff]'>Welcome, User</h1>}
               <div className='flex flex-col'>
                 <h3 className='flex items-center gap-x-2 text-lg sm:text-xl text-[#B4B4B4] '>Let's do your best today, <TaskSquare size="23" color="#FDCA40" /> </h3> <h3 className='flex items-center text-md sm:text-xl text-[#B4B4B4]'> and get work effectiveness for all <br /> your team members in the company </h3>
               </div>

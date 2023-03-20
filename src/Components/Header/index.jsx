@@ -51,7 +51,7 @@ function Header() {
       </div>
 
 
-      {menuToggle && (<motion.div className='absolute top-0 z-50' initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} ><div className='z-50 sm:hidden absolute top-0 left-0 w-screen h-screen xl:h-full 2xl:h-screen  bg-[#121212] flex flex-col justify-evenly border-r border-[#3B3B3B]'>
+      {menuToggle && (<motion.div className='absolute top-0 z-50 h-max' initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} ><div className='z-50 border border-[#223432] p-0 sm:hidden absolute top-0 left-0 w-screen overflow-y-scroll 2xl:[100%]  bg-[#121212] flex flex-col justify-evenly border-r border-[#3B3B3B]'>
 
         <div className=' py-8 px-5 relative sm:px-12 xl:py-6 sm:py-9 flex bg-transparent sm:bg-[#121212] justify-end items-center '>
           <div className=' h-full select-none flex w-full justify-between sm:justify-end items-center'>
@@ -61,7 +61,7 @@ function Header() {
           </div>
         </div>
 
-        <div className='py-0 px-5 pb-8 gap-y-14 h-full sm:hidden relative top-0 flex flex-col justify-start xl:gap-y-4 2xl:gap-y-0 xl:py-8 2xl:py-12'>
+        <div className=' py-0 px-5 pb-8 gap-y-14 h-full sm:hidden relative top-0 flex flex-col justify-start xl:gap-y-4 2xl:gap-y-0 xl:py-8 2xl:py-12'>
           <div className='flex flex-col gap-y-7'>
             <h1 className='text-md font-medium tracking-wide text-[#B4B4B4]'>MENU</h1>
             <Link className=' text-2xl text-[#FDCA40] sideLink relative gap-x-5 flex items-center' to='/'><Home className='xl:w-7 2xl:w-max' size="32" color="#FDCA40" /> Dashboard</Link>
