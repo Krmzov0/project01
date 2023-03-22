@@ -14,7 +14,7 @@ function ScriptComponent({ script, delteScript, toggleComplete }) {
                             <h4 className={script.completed ? 'text-xl text-[#ffffff7e] line-through transition-all' : 'transition-all text-xl text-[#fff]'}>{script.title}</h4>
                             <div className='flex sm:hidden gap-x-4'>
                                 <Edit className='' size="22" color="#DBDBDB" />
-                                <TickSquare onClick={() => toggleComplete(script)} className='flex sm:hidden' size="22" color="#DBDBDB" />
+                                {script.completed ? <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer flex sm:hidden' size="22" color="#FDCA40" /> : <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer flex sm:hidden' size="22" color="#DBDBDB" />}
                             </div>
                         </div>
                         <div className='flex sm:hidden w-full justify-between items-center'>
@@ -29,7 +29,7 @@ function ScriptComponent({ script, delteScript, toggleComplete }) {
                 <div className='flex items-center gap-x-0 sm:gap-x-[4.5rem]'>
                     <div className='flex flex-col sm:flex-row items-center gap-x-12'>
                         <Edit className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />
-                        <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />
+                        {script.completed ? <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer hidden sm:flex' size="25" color="#FDCA40" /> : <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />}
                         <Trash onClick={() => delteScript(script.id)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />
                     </div>
 
