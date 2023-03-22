@@ -6,6 +6,8 @@ import { Home, Microphone2, Keyboard, VideoSquare, TrendUp, LogoutCurve, User, P
 
 function SideBar() {
 
+   
+    
     const { logOut } = UserAuth()
 
     const handleSignOut = async () => {
@@ -19,7 +21,7 @@ function SideBar() {
     return (
         <>
             <div className='sm:flex hidden left-0 w-96 xl:h-full 2xl:h-screen bg-[#121212] flex-col justify-start border-r border-[#3B3B3B]'>
-                <h1 className='flex text-[#fff] text-3xl px-7 xl:py-5 2xl:py-8 font-light border-b border-[#3B3B3B] gap-x-1 '>Lead <span className='text-[#FDCA40]'>VIPS</span></h1>
+            <Link to='/' ><h1 className='flex text-[#fff] text-3xl px-7 xl:py-5 2xl:py-8 font-light border-b border-[#3B3B3B] gap-x-1 '>Lead <span className='text-[#FDCA40]'>VIPS</span></h1></Link>
 
                 <div className='px-7 h-full relative top-0 flex flex-col justify-between xl:gap-y-4 2xl:gap-y-0 xl:py-8 2xl:py-12'>
                     <div className='flex flex-col gap-y-7'>
@@ -38,7 +40,7 @@ function SideBar() {
                         <h1 className='text-md font-medium tracking-wide text-[#B4B4B4]'>GENERAL</h1>
 
                         <div className='gap-x-5 flex items-center relative sideLink'><User className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb" /> <Link className=' xl:text-lg 2xl:text-xl text-[#DBDBDB] flex items-center' to='/account'>Account</Link></div>
-                        <div className='gap-x-5 flex items-center relative sideLink' onClick={handleSignOut}><LogoutCurve className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb" /> <Link className=' xl:text-lg 2xl:text-xl text-[#DBDBDB] flex items-center'>Logout</Link></div>
+                        <div className='gap-x-5 flex items-center relative sideLink' onClick={handleSignOut}><LogoutCurve className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb" /> <Link to='/' className=' xl:text-lg 2xl:text-xl text-[#DBDBDB] flex items-center'>Logout</Link></div>
                     </div>
                 </div>
 

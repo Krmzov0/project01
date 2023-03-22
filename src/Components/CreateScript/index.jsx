@@ -3,22 +3,10 @@ import Header from '../Header/';
 import { ArrowRight2 } from 'iconsax-react'
 import { Link } from 'react-router-dom'
 import { db } from '../../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 function CreateSript() {
-
   const [title, setTitle] = useState('')  
-  
-  const copywritingSubmit = async (e) => {
-    e.preventDefault();
-    if (title !== "") {
-      await addDoc(collection(db, "copywriting"), {
-        title, 
-        completed: false,
-      });
-      setTitle("");
-    }
-  };
 
   const UGCVideosSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +14,7 @@ function CreateSript() {
       await addDoc(collection(db, "ugcVideos"), {
         title, 
         completed: false,
+        createdAt: serverTimestamp(),
       });
       setTitle("");
     }
@@ -37,6 +26,7 @@ function CreateSript() {
       await addDoc(collection(db, "Voiceovers"), {
         title, 
         completed: false,
+        createdAt: serverTimestamp(),
       });
       setTitle("");
     }
@@ -49,6 +39,7 @@ function CreateSript() {
       await addDoc(collection(db, "Videoediting"), {
         title, 
         completed: false,
+        createdAt: serverTimestamp(),
       });
       setTitle("");
     }
@@ -60,7 +51,7 @@ function CreateSript() {
       await addDoc(collection(db, "adLaunch"), {
         title, 
         completed: false,
-        created: new Date(),
+        createdAt: serverTimestamp(),
       });
       setTitle("");
     }
@@ -86,8 +77,7 @@ function CreateSript() {
 
           <div className='flex flex-col w-max gap-y-4'>
             <h3 className='text-xl text-[#dbdbdb]'>Publish to:</h3>
-            <div className='gap-3 grid grid-cols-2 grid-rows-4'>
-              <button onClick={copywritingSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Copywriting</button>
+            <div className='gap-3 grid grid-cols-1 grid-rows-4 sm:grid-cols-2'>
               <button onClick={UGCVideosSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>UGC Videos</button>
               <button onClick={VoiceoversSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Voiceovers</button>
               <button onClick={VideoeditingSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Video editing</button>
