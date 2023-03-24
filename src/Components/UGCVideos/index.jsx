@@ -5,6 +5,7 @@ import ScriptComponent from '../ScriptComponent'
 import { db } from '../../firebase';
 import { collection, onSnapshot, query, deleteDoc, doc, updateDoc, setDoc, getDoc } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 function UGCVideos() {
 
@@ -55,7 +56,17 @@ function UGCVideos() {
             await setDoc(targetDocRef, sourceDocData);
             await deleteDoc(sourceDocRef);
 
-            console.log(`Document ${id} has been moved from the source collection to the target collection.`);
+            toast.success('Script created successfuly', {
+                style: {
+                    border: '2px solid #FDCA40',
+                    padding: '16px',
+                    color: '#1c1c1c',
+                },
+                iconTheme: {
+                    primary: '#FDCA40',
+                    secondary: '#FFFAEE',
+                },
+            });
         } else {
             console.log(`Document ${id} does not exist in the source collection.`);
         }
@@ -63,6 +74,8 @@ function UGCVideos() {
 
     return (
         <>
+            <Toaster position="top-center" reverseOrder={false} />
+
             <div className={modal ? 'z-50 absolute bg-[#00000041] w-screen h-screen flex justify-center items-center' : 'z-50 hidden bg-[#00000041] w-screen h-screen justify-center items-center'}>
                 <div className='p-8 flex justify-between items-center'>
                     <input value={inputValue} onChange={(event) => console.log(setInputValue(event.target.value))} className='bg-[#b4b4b42d] outline-none focus-visible:outline-2 focus-visible:outline-[#FDCA40] placeholder:text-[#ffffffc1] text-[#fff] p-4 px-3 xl:w-[24rem] 2xl:w-[28rem] rounded-xl text-lg' type="text" name='script' />
@@ -90,8 +103,8 @@ function UGCVideos() {
                                 <h4 className='text-[#f7f7f7c2] text-md'>Name</h4>
 
                                 <div className='flex items-center gap-x-52'>
-                                    <div className='flex items-center gap-x-4'>
-                                        <div className='flex items-center gap-x-6 mr-6'>
+                                    <div className='flex items-center gap-x-6'>
+                                        <div className='flex items-center gap-x-6 mr-3'>
                                             <h4 className='text-[#f7f7f7c2] text-md'>Get</h4>
                                             <h4 className='text-[#f7f7f7c2] text-md'>Send</h4>
                                         </div>

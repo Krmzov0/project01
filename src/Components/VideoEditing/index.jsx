@@ -5,6 +5,7 @@ import ScriptComponent from '../ScriptComponent'
 import { db } from '../../firebase';
 import { collection, onSnapshot, query, deleteDoc, doc, updateDoc, setDoc, getDoc } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 function VideoEditing() {
 
@@ -55,7 +56,17 @@ function VideoEditing() {
             await setDoc(targetDocRef, sourceDocData);
             await deleteDoc(sourceDocRef);
 
-            console.log(`Document ${id} has been moved from the source collection to the target collection.`);
+            toast.success('Script sent successfuly', {
+                style: {
+                    border: '2px solid #FDCA40',
+                    padding: '16px',
+                    color: '#1c1c1c',
+                },
+                iconTheme: {
+                    primary: '#FDCA40',
+                    secondary: '#FFFAEE',
+                },
+            });
         } else {
             console.log(`Document ${id} does not exist in the source collection.`);
         }
@@ -63,6 +74,9 @@ function VideoEditing() {
 
     return (
         <>
+
+            <Toaster position="top-center" reverseOrder={false} />
+
             <div className={modal ? 'z-50 absolute bg-[#00000041] w-screen h-screen flex justify-center items-center' : 'z-50 hidden bg-[#00000041] w-screen h-screen justify-center items-center'}>
                 <div className='p-8 flex justify-between items-center'>
                     <input value={inputValue} onChange={(event) => console.log(setInputValue(event.target.value))} className='bg-[#b4b4b42d] outline-none focus-visible:outline-2 focus-visible:outline-[#FDCA40] placeholder:text-[#ffffffc1] text-[#fff] p-4 px-3 xl:w-[24rem] 2xl:w-[28rem] rounded-xl text-lg' type="text" name='script' />
@@ -73,7 +87,7 @@ function VideoEditing() {
             <div className='relative top-0 w-full'>
                 <Header />
                 <div className='px-5 sm:px-12 py-6 sm:py-12 gap-y-4 sm:gap-y-3 flex flex-col'>
-                    
+
                     <div className='flex flex-col gap-y-4 sm:gap-y-8'>
                         <div className='flex justify-between items-center'>
                             <h4 className='text-md flex items-center gap-x-2 text-[#B4B4B4]'><Link to='/'>DASHBOARD</Link> <ArrowRight2 className='w-4 sm:w-max' size="19" color="#B4B4B4" /> <Link to='/video-editing'>VIDEO EDITING</Link></h4>
