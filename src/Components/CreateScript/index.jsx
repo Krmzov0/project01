@@ -4,19 +4,45 @@ import { ArrowRight2 } from 'iconsax-react'
 import { Link } from 'react-router-dom'
 import { db } from '../../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import toast, { Toaster } from 'react-hot-toast';
 
 function CreateSript() {
-  const [title, setTitle] = useState('')  
+
+  const [title, setTitle] = useState('')
 
   const UGCVideosSubmit = async (e) => {
     e.preventDefault();
     if (title !== "") {
       await addDoc(collection(db, "ugcVideos"), {
-        title, 
+        title,
         completed: false,
         createdAt: serverTimestamp(),
       });
       setTitle("");
+
+      toast.success('Script created successfuly', {
+        style: {
+          border: '2px solid #FDCA40',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: '#FDCA40',
+          secondary: '#FFFAEE',
+        },
+      });
+    } else {
+      toast.error('Field cannot be empty', {
+        style: {
+          border: '2px solid red',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE',
+        },
+      });
     }
   };
 
@@ -24,24 +50,70 @@ function CreateSript() {
     e.preventDefault();
     if (title !== "") {
       await addDoc(collection(db, "Voiceovers"), {
-        title, 
+        title,
         completed: false,
         createdAt: serverTimestamp(),
       });
       setTitle("");
+      toast.success('Script created successfuly', {
+        style: {
+          border: '2px solid #FDCA40',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: '#FDCA40',
+          secondary: '#FFFAEE',
+        },
+      });
+    } else {
+      toast.error('Field cannot be empty', {
+        style: {
+          border: '2px solid red',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE',
+        },
+      });
     }
   };
 
   const VideoeditingSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (title !== "") {
       await addDoc(collection(db, "Videoediting"), {
-        title, 
+        title,
         completed: false,
         createdAt: serverTimestamp(),
       });
       setTitle("");
+      toast.success('Script created successfuly', {
+        style: {
+          border: '2px solid #FDCA40',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: '#FDCA40',
+          secondary: '#FFFAEE',
+        },
+      });
+    } else {
+      toast.error('Field cannot be empty', {
+        style: {
+          border: '2px solid red',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE',
+        },
+      });
     }
   };
 
@@ -49,16 +121,41 @@ function CreateSript() {
     e.preventDefault();
     if (title !== "") {
       await addDoc(collection(db, "adLaunch"), {
-        title, 
+        title,
         completed: false,
         createdAt: serverTimestamp(),
       });
       setTitle("");
+      toast.success('Script created successfuly', {
+        style: {
+          border: '2px solid #FDCA40',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: '#FDCA40',
+          secondary: '#FFFAEE',
+        },
+      });
+    } else {
+      toast.error('Field cannot be empty', {
+        style: {
+          border: '2px solid red',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE',
+        },
+      });
     }
   };
 
   return (
     <>
+
+      <Toaster position="top-center" reverseOrder={false} />
       <div className='relative top-0 w-full'>
         <Header />
 
