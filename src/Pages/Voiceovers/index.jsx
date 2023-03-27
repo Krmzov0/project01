@@ -1,13 +1,13 @@
 import React from 'react'
-import Header from '../Header/';
+import Header from '../../Components/Header';
 
-function AdLaunch() {
+function Voiceovers() {
     return (
         <div className='relative top-0 w-full'>
             <Header />
-            <div>AdLaunch</div>
+            <div>Voiceovers</div>
         </div>
     )
 }
 
-export default AdLaunch
+export default Voiceovers

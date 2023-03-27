@@ -1,15 +1,15 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import MainPage from './Components/MainPage'; 
+import MainPage from './Pages/MainPage'; 
 import { AuthContextProvider } from './Context/authContext';
 import SideBar from './Components/Sidebar';
-import Copywriting from './Components/Copywriting';
-import UGCVideos from './Components/UGCVideos'
-import Voiceovers from './Components/Voiceovers'
-import VideoEditing from './Components/VideoEditing'
-import AdLaunch from './Components/AdLaunch'
-import CreateSript from './Components/CreateScript';
-import Account from './Components/Account';
+import Copywriting from './Pages/Copywriting';
+import UGCVideos from './Pages/UGCVideos'
+import Voiceovers from './Pages/Voiceovers'
+import VideoEditing from './Pages/VideoEditing'
+import AdLaunch from './Pages/AdLaunch'
+import CreateSript from './Pages/CreateScript';
+import Account from './Pages/Account';
 
 function App() {
   return (

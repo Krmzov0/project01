@@ -47,14 +47,14 @@ function Header() {
 
   return (
     <>
-      <div className=' py-8 px-5 sm:px-12 xl:py-6 2xl:py-9 flex bg-transparent sm:bg-[#121212] justify-end items-center border-0 sm:border-b border-[#3B3B3B] '>
+      <div className='px-5 pt-6 sm:pt-0 xl:h-24 2xl:h-28 sm:px-12 flex bg-transparent sm:bg-[#121212] justify-end items-center border-0 sm:border-b border-[#3B3B3B] '>
         <div className=' h-full select-none flex w-full justify-between sm:justify-end items-center'>
           <Link to='/'><h1 className='sm:hidden flex text-3xl text-[#dbdbdb] gap-x-1'>Lead <span className='text-[#FDCA40]'>VIPS</span></h1></Link>
           <div className='flex items-center gap-x-4 flex-row-reverse'>
             <Category onClick={handleMenuToggle} className='sm:hidden flex' size="32" color="#dbdbdb" />
             <User onClick={userMenuToggle} className='sm:hidden flex' size="32" color="#dbdbdb" />
           </div>
-          {user?.displayName ? <h3 className='hidden sm:flex cursor-pointer items-center gap-x-2 text-xl text-[#DBDBDB]' >{user?.displayName}</h3> : <button className='hidden sm:flex text-xl text-[#FDCA40] border-[#3B3B3B] rounded-md' onClick={handleGoogleSignIn}>Sign in with Google</button>}
+          {user?.displayName ? <div className='hidden sm:flex items-center gap-x-3'><img className='w-11 rounded-full border border-[#dbdbdb] p-1' src={user?.photoURL} alt='' /> <h3 className='hidden sm:flex cursor-pointer items-center gap-x-2 text-xl text-[#DBDBDB]' >{user?.displayName}</h3></div> : <button className='hidden sm:flex text-xl text-[#FDCA40] border-[#3B3B3B] rounded-md' onClick={handleGoogleSignIn}>Sign in with Google</button>}
         </div>
       </div>
 

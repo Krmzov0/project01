@@ -1,7 +1,7 @@
 import { Add, TaskSquare } from 'iconsax-react';
 import React from 'react'
 import { UserAuth } from '../../Context/authContext'
-import Header from '../Header/';
+import Header from '../../Components/Header';
 import { Link } from 'react-router-dom'
 
 function MainPage() {
