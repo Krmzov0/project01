@@ -118,7 +118,7 @@ function UGCVideos() {
                                 </div>
                             </div>
 
-                            <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 sm:h-[23.3rem] relative scriptList overflow-hidden overflow-y-scroll'>
+                            <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 sm:h-[23.3rem] relative scriptList overflow-hidden overflow-y-scroll '>
                                 {scripts.map((script, index) => (
                                     <ScriptComponent key={index} script={script} modalPopup={modalPopup} toggleComplete={toggleComplete} delteScript={deleteScript} moveScript={moveScript} />
                                 ))}

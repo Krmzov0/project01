@@ -30,7 +30,6 @@ function MainPage() {
             </div>
 
 
-
             <Link to='/create-script' className='fixed bottom-6 sm:bottom-auto sm:relative z-40'><button className='mt-4 relative w-max px-[2px] py-[2px] pr-8 rounded-full bg-[#FDCA40]  flex justify-center items-center text-lg gap-x-4 font-medium'><div className='p-4 bg-[#1c1c1c] rounded-full'><Add size="26" color="#fff" /></div> Create Script </button></Link>
           </div>
         </div>
@@ -39,10 +38,6 @@ function MainPage() {
           <div>
             <h1 className='text-3xl sm:text-4xl text-[#dbdbdb] font-normal'>Your Scripts</h1>
             <h4 className='text-lg sm:text-xl text-[#B4B4B4] mt-4'>Your scripts will appear here when u pull them</h4>
-          </div>
-
-          <div>
-            
           </div>
         </div>
       </div>

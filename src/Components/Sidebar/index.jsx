@@ -1,22 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './style.css'
-import { UserAuth } from '../../Context/authContext'
-import { Home, Microphone2, Keyboard, VideoSquare, TrendUp, LogoutCurve, User, Profile2User } from 'iconsax-react'
+import { Home, Microphone2, Keyboard, VideoSquare, TrendUp, User, Profile2User } from 'iconsax-react'
 
 function SideBar() {
 
-   
-    
-    const { logOut } = UserAuth()
-
-    const handleSignOut = async () => {
-        try {
-            await logOut()
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
     return (
         <>
@@ -39,8 +27,7 @@ function SideBar() {
                     <div className='flex flex-col gap-y-7'>
                         <h1 className='text-md font-medium tracking-wide text-[#B4B4B4]'>GENERAL</h1>
 
-                        <div className='gap-x-5 flex items-center relative sideLink'><User className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb" /> <Link className=' xl:text-lg 2xl:text-xl text-[#DBDBDB] flex items-center' to='/account'>Account</Link></div>
-                        <div className='gap-x-5 flex items-center relative sideLink' onClick={handleSignOut}><LogoutCurve className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb" /> <Link to='/' className=' xl:text-lg 2xl:text-xl text-[#DBDBDB] flex items-center'>Logout</Link></div>
+                        <div className='gap-x-5 flex items-center relative '><User className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb" /> <Link className=' xl:text-lg 2xl:text-xl text-[#DBDBDB] flex items-center' to='/account'>Account</Link></div>
                     </div>
                 </div>
 

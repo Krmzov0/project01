@@ -20,7 +20,8 @@ function ScriptComponent({ script, delteScript, toggleComplete, modalPopup, move
                     </div>
                 </div>
             </div>
-            <div className='select-none w-full scriptComponent relative px-4 pl-4 py-4 rounded-br-2xl rounded-bl-2xl sm:rounded-none border border-[#dbdbdb55] flex items-center justify-between'>
+
+            <div className=' hover:bg-[#f7f7f717]  select-none w-full scriptComponent relative px-4 pl-4 py-4 rounded-br-2xl rounded-bl-2xl sm:rounded-none border border-[#dbdbdb55] flex items-center justify-between'>
                 <div className='flex w-full justify-between items-center'>
                     <div className='flex w-full flex-col gap-y-6'>
                         <div className='flex justify-between sm:items-center items-start'>
