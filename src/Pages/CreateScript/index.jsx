@@ -159,7 +159,7 @@ function CreateSript() {
       <div className='relative top-0 w-full'>
         <Header />
 
-        <div className='px-5 sm:px-12 py-6 sm:py-12 gap-y-4 sm:gap-y-8 flex flex-col'>
+        <div className='mt-4 sm:mt-0 px-5 sm:px-12 py-6 sm:py-12 gap-y-4 sm:gap-y-8 flex flex-col'>
           <div className='flex justify-between items-center'>
             <h4 className='text-md flex items-center gap-x-2 text-[#B4B4B4]'><Link to='/'>DASHBOARD</Link> <ArrowRight2 className='w-4 sm:w-max' size="19" color="#B4B4B4" /> <Link to='/create-script'>CREATE SCRIPT</Link></h4>
           </div>
@@ -168,8 +168,8 @@ function CreateSript() {
         </div>
 
         <div className='px-5 sm:px-12 gap-y-8 flex flex-col'>
-          <form >
-            <input value={title} onChange={(e) => setTitle(e.target.value)} className='bg-[#b4b4b42d] outline-none focus-visible:outline-2 focus-visible:outline-[#FDCA40] placeholder:text-[#ffffffc1] text-[#fff] p-4 px-3 xl:w-[24rem] 2xl:w-[28rem] rounded-xl text-lg' type="text" name='script' placeholder='Write your script' />
+          <form>
+            <input value={title} onChange={(e) => setTitle(e.target.value)} className='w-full bg-[#b4b4b42d] outline-none focus-visible:outline-2 focus-visible:outline-[#FDCA40] placeholder:text-[#ffffffc1] text-[#fff] p-4 px-3 sm:w-[32.5rem] rounded-xl text-lg' type="text" name='script' placeholder='Write your script' />
           </form>
 
           <div className='flex flex-col w-max gap-y-4'>

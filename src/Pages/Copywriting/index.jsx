@@ -9,7 +9,7 @@ function Copywriting() {
         <div className='relative top-0 w-full'>
             <Header />
 
-            <div className='px-5 sm:px-12 py-6 sm:py-12 gap-y-4 sm:gap-y-3 flex flex-col'>
+            <div className='mt-4 sm:mt-0 px-5 sm:px-12 py-6 sm:py-12 gap-y-4 sm:gap-y-3 flex flex-col'>
                 <div className='flex justify-between items-center'>
                     <h4 className='text-md flex items-center gap-x-2 text-[#B4B4B4]'><Link to='/'>DASHBOARD</Link> <ArrowRight2 className='w-4 sm:w-max' size="19" color="#B4B4B4" /> <Link to='/copywriting'>COPYWRITING</Link></h4>
                 </div>
