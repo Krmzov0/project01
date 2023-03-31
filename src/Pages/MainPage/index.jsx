@@ -37,7 +37,7 @@ function MainPage() {
         <div className='mx-5 sm:mx-8 mt-8 flex flex-col h-max rounded-xl'>
           <div>
             <h1 className='text-3xl sm:text-4xl text-[#dbdbdb] font-normal'>Your Scripts</h1>
-            <h4 className='text-lg sm:text-xl text-[#B4B4B4] mt-4'>Your scripts will appear here when u pull them</h4>
+            <h4 className='text-lg sm:text-xl text-[#B4B4B4] mt-4'>Your scripts will appear here when you pull them</h4>
           </div>
         </div>
       </div>
