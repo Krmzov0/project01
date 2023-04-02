@@ -1,65 +1,69 @@
-import React, { useState } from 'react'
-import { Edit, TickSquare, Trash, DirectSend, DocumentDownload } from 'iconsax-react'
+import React from 'react'
+import { TickSquare, Trash, DirectSend, DocumentDownload, Link } from 'iconsax-react'
 import './style.css'
+import { Tooltip } from 'flowbite-react'
 
+function ScriptComponent({ script, delteScript, toggleComplete, moveScript, handleAttachLink, fieldValue, setFieldValue }) {
 
-function ScriptComponent({ script, delteScript, handleEdit, toggleComplete, moveScript }) {
-
-    const [newTitle, setnewTitle] = useState(script.title)
-
-    const handleChange = (e) => {
-        e.preventDefault();
-        if (script.completed === true) {
-            setnewTitle(script.title);
-        } else {
-            script.title = "";
-            setnewTitle(e.target.value);
-        }
-    }
     return (
         <>
             <div className='sm:hidden bg-[#f7f7f717] mb-[-12px] p-4 rounded-tr-2xl rounded-tl-2xl'>
                 <div className='flex sm:hidden w-full justify-between gap-y-2'>
                     <div className='flex sm:hidden gap-x-5 items-center'>
-                        <Edit size="25" color="#DBDBDB" onClick={() => handleEdit(script, newTitle)} />
+                        {/* <Edit size="25" color="#DBDBDB" onClick={() => handleEdit(script, newTitle)} /> */}
+
                         {script.completed ? <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer flex sm:hidden' size="25" color="#FDCA40" /> : <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer flex sm:hidden' size="25" color="#DBDBDB" />}
                         <Trash onClick={() => delteScript(script.id)} className='flex sm:hidden' size="25" color="#DBDBDB" />
                     </div>
                     <div className='flex items-center gap-x-4'>
+                        <Link onClick={() => handleAttachLink(script.id)} size="25" color="#DBDBDB" className='right-[3px] relative cursor-pointer' />
                         <DocumentDownload size="25" color="#DBDBDB" />
                         <DirectSend size="25" color="#DBDBDB" className='cursor-pointer' onClick={() => moveScript(script.id)} />
                     </div>
                 </div>
             </div>
 
-            <div className='hover:bg-[#f7f7f717] select-none w-full scriptComponent relative px-4 pl-4 py-4 rounded-br-2xl rounded-bl-2xl sm:rounded-none border border-[#dbdbdb55] flex items-start justify-between'>
-                <div className='flex w-full justify-between items-center'>
-                    <div className='flex w-full flex-col gap-y-6'>
-                        <div className='flex flex-col justify-between items-start'>
-                            <input onChange={handleChange} value={script.title === '' ? newTitle : script.title} className={script.completed ? 'text-xl text-[#ffffff7e] line-through transition-all w-full sm:w-[50rem] break-words bg-transparent' : 'w-full sm:w-[50rem] break-words transition-all text-xl text-[#fff] bg-transparent'} />
-                            <div className='mt-4 w-[90%] h-[1px] bg-[#dbdbdb55]'></div>
-                            <p className='w-[50rem] h-max break-words mt-4 text-lg text-[#fff]'>{script.scriptText}</p>
+            <div className='w-full hover:bg-[#f7f7f717] select-none scriptComponent relative px-4 pl-4 py-4 rounded-br-2xl rounded-bl-2xl sm:rounded-none border border-[#dbdbdb55] flex items-start justify-between'>
+                <div className='w-full flex justify-between items-center'>
+                    <div className='w-full flex flex-col gap-y-6'>
+                        <div className='w-full flex flex-col justify-between items-start'>
+                            <input value={script.title} readOnly className={script.completed ? 'outline-none border-none cursor-default text-xl text-[#ffffff7e] line-through transition-all break-words bg-transparent w-[90%]' : ' outline-none border-none cursor-default w-full break-words transition-all text-xl text-[#fff] bg-transparent'} />
+                            <div className='mt-4 h-[1px] w-[90%] bg-[#dbdbdb55]'></div>
+                            {script?.scriptText ? <p className='w-56 xl:w-[30rem] 2xl:w-[50rem] h-max break-words mt-4 text-lg text-[#fff] select-text'>{script.scriptText}</p> : <p className='text-[#ffffffa1] text-lg mt-4'>No script text</p>}
+                            <Tooltip content="Click to open Link" style='light'>{script?.Link ? <h3 className='flex text-md mt-2 text-[#FDCA40]' ><a href={script.Link} target='blank' >Video Link</a></h3> : <h3 className='text-lg mt-2 text-[#ffffffa1]'>No script Link</h3>}</Tooltip>
                         </div>
                         <h3 className='flex sm:hidden text-[#ffffffd2]'>{script.createdAt?.toDate().toDateString()} {script.createdAt?.toDate().toLocaleTimeString()}</h3>
                     </div>
                 </div>
 
-                <div className='flex items-center w-max justify-between'>
-                    <div className='flex flex-col sm:flex-row items-center gap-x-10'>
-                        <div className='hidden sm:flex gap-x-7'>
+
+
+                <div className='flex items-center w-max justify-between h-full'>
+                    <div className='hidden sm:flex flex-col h-full sm:flex-row items-start gap-x-[2.35rem]'>
+                        <Tooltip content="Pull to personal scripts" style='light'>
                             <DocumentDownload size="25" color="#DBDBDB" />
+                        </Tooltip>
+                        <Tooltip content="Open Send Popup" style={'light'}>
                             <DirectSend size="25" color="#DBDBDB" className='cursor-pointer' onClick={() => moveScript(script.id)} />
-                        </div>
-                        <Edit onClick={() => handleEdit(script, newTitle)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />
-                        {script.completed ? <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer hidden sm:flex' size="25" color="#FDCA40" /> : <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />}
-                        <Trash onClick={() => delteScript(script.id)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />
+                        </Tooltip>
+                        <Tooltip content="Attach Link" style={'light'}>
+                            <Link onClick={() => handleAttachLink(script.id)} size="25" color="#DBDBDB" className='right-[3px] relative cursor-pointer' />
+                        </Tooltip>
+                        {/* <Edit onClick={() => handleEdit(script, newTitle)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" /> */}
+                        <Tooltip content="Complete" style={'light'}>
+                            {script.completed ? <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer hidden sm:flex' size="25" color="#FDCA40" /> : <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />}
+                        </Tooltip>
+                        <Tooltip content="Delete" style={'light'}>
+                            <Trash onClick={() => delteScript(script.id)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />
+                        </Tooltip>
                     </div>
 
-                    <div>
-                        <h3 className='w-max sm:w-72 hidden sm:justify-end sm:flex text-[#ffffffd2]'>{script.createdAt?.toDate().toDateString()} {script.createdAt?.toDate().toLocaleTimeString()}</h3>
+                    <div className='flex flex-col-reverse justify-between items-end h-full'>
+                        <h3 className='text-md hidden sm:flex text-[#ffffff7e] w-max'>Script ID: {script.id}</h3>
+                        <h3 className='w-max xl:w-64 2xl:w-72 hidden sm:justify-end sm:flex text-[#ffffffd2]'>{script.createdAt?.toDate().toDateString()} {script.createdAt?.toDate().toLocaleTimeString()}</h3>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

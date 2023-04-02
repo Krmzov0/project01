@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../../Components/Header';
-import { ArrowRight2 } from 'iconsax-react'
 import ScriptComponent from '../../Components/ScriptComponent'
 import { db } from '../../firebase';
 import { collection, onSnapshot, query, deleteDoc, doc, updateDoc, setDoc, getDoc } from 'firebase/firestore';
-import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import { ArrowRight2 } from 'iconsax-react';
+import { Link } from 'react-router-dom'
 
 function VideoEditing() {
 
-    const [modal, setModal] = useState(false)
-    const [inputValue, setInputValue] = useState('');
-
-    const modalPopup = () => {
-        modal ? setModal(false) : setModal(true)
-    }
-
     const [scripts, setscripts] = useState([])
+
+    const handleEdit = async (script, title, scriptText) => {
+        await updateDoc(doc(db, 'Videoediting', script.id), { title: title });
+        await updateDoc(doc(db, 'Videoediting', script.id), { scriptText: scriptText });
+    }
 
     useEffect(() => {
         const q = query(collection(db, 'Videoediting'))
@@ -37,12 +35,19 @@ function VideoEditing() {
     }
 
     const deleteScript = async (id) => {
-        await deleteDoc(doc(db, 'Videoediting', id))
-    }
+        await deleteDoc(doc(db, 'Videoediting', id));
 
-    const editScript = async (script) => {
-        const docRef = doc(db, 'Videoediting', script.id);
-        await setDoc(docRef, { value: inputValue });
+        toast.success('Script Deleted successfuly', {
+            style: {
+                border: '2px solid #FDCA40',
+                padding: '16px',
+                color: '#1c1c1c',
+            },
+            iconTheme: {
+                primary: '#FDCA40',
+                secondary: '#FFFAEE',
+            },
+        });
     }
 
     const moveScript = async (id) => {
@@ -51,12 +56,12 @@ function VideoEditing() {
 
         if (sourceDocSnap.exists()) {
             const sourceDocData = sourceDocSnap.data();
-            const targetDocRef = (doc(db, 'Sakina', id));
+            const targetDocRef = (doc(db, 'ugcVideos', id));
 
             await setDoc(targetDocRef, sourceDocData);
             await deleteDoc(sourceDocRef);
 
-            toast.success('Script sent successfuly', {
+            toast.success('Script created successfuly', {
                 style: {
                     border: '2px solid #FDCA40',
                     padding: '16px',
@@ -77,15 +82,9 @@ function VideoEditing() {
 
             <Toaster position="top-center" reverseOrder={false} />
 
-            <div className={modal ? 'z-50 absolute bg-[#00000041] w-screen h-screen flex justify-center items-center' : 'z-50 hidden bg-[#00000041] w-screen h-screen justify-center items-center'}>
-                <div className='p-8 flex justify-between items-center'>
-                    <input value={inputValue} onChange={(event) => console.log(setInputValue(event.target.value))} className='bg-[#b4b4b42d] outline-none focus-visible:outline-2 focus-visible:outline-[#FDCA40] placeholder:text-[#ffffffc1] text-[#fff] p-4 px-3 xl:w-[24rem] 2xl:w-[28rem] rounded-xl text-lg' type="text" name='script' />
-                    <button onClick={editScript} className='border rounded-xl p-4'>Edit Script</button>
-                </div>
-            </div>
-
             <div className='relative top-0 w-full'>
                 <Header />
+
                 <div className='mt-4 sm:mt-0 px-5 sm:px-12 py-6 sm:py-12  flex flex-col'>
                     <div className='flex flex-col gap-y-4 sm:gap-y-8'>
                         <div className='flex justify-between items-center'>
@@ -121,7 +120,7 @@ function VideoEditing() {
 
                             <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 sm:h-[23.3rem] relative scriptList overflow-hidden overflow-y-scroll'>
                                 {scripts.map((script, index) => (
-                                    <ScriptComponent key={index} script={script} modalPopup={modalPopup} toggleComplete={toggleComplete} delteScript={deleteScript} moveScript={moveScript} />
+                                    <ScriptComponent key={index} script={script}  handleEdit={handleEdit} toggleComplete={toggleComplete} delteScript={deleteScript} moveScript={moveScript} />
                                 ))}
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import MainPage from './Pages/MainPage'; 
-import { AuthContextProvider } from './Context/authContext';
+import MainPage from './Pages/MainPage';
+import { AuthContextProvider, UserAuth } from './Context/authContext';
 import SideBar from './Components/Sidebar';
 import Copywriting from './Pages/Copywriting';
 import UGCVideos from './Pages/UGCVideos'
@@ -10,12 +10,17 @@ import VideoEditing from './Pages/VideoEditing'
 import AdLaunch from './Pages/AdLaunch'
 import CreateSript from './Pages/CreateScript';
 import Account from './Pages/Account';
+import Signin from './Pages/Signin';
 
 function App() {
+
+  const { user } = UserAuth();
+
   return (
-    <div className='flex'>
-      <SideBar />
-      <AuthContextProvider>
+    <>
+      {user?.displayName ? <div className='flex'>
+        <SideBar />
+        <AuthContextProvider>
           <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/copywriting' element={<Copywriting />} />
@@ -25,9 +30,11 @@ function App() {
             <Route path='/ad-launch' element={<AdLaunch />} />
             <Route path='/create-script' element={<CreateSript />} />
             <Route path='/account' element={<Account />} />
+            <Route path='/signin' element={<Signin />} />
           </Routes>
-      </AuthContextProvider>
-    </div>
+        </AuthContextProvider>
+      </div> : <Signin />}
+    </>
   );
 }
 

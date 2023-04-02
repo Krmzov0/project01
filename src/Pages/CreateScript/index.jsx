@@ -176,7 +176,7 @@ function CreateSript() {
           <form className='flex flex-col gap-y-4 w-full sm:w-[33rem]'>
             <input value={title} onChange={(e) => setTitle(e.target.value)} className='w-full hover:outline hover:outline-[#fff] transition-all bg-[#b4b4b42d] outline-none focus-visible:outline-2 focus-visible:outline-[#FDCA40] placeholder:text-[#ffffffc1] text-[#fff] p-4 px-3 rounded-xl text-lg' type="text" name='script' placeholder='Write your Title' />
             <textarea value={scriptText} onChange={(e) => setscriptText(e.target.value)} className='h-max w-full break-words hover:outline transition-all hover:outline-[#fff] bg-[#b4b4b42d] outline-none focus-visible:outline-2 focus-visible:outline-[#FDCA40] placeholder:text-[#ffffffc1] text-[#fff] p-4 px-3 rounded-xl text-lg resize-none' type="textarea" name='scriptText' placeholder='Write your script' />
-            <div className='hidden flex justify-start items-center gap-x-2'>
+            <div className='flex justify-start items-center gap-x-2'>
               <input className='w-full bg-[#b4b4b42d] outline-none border-none placeholder:text-[#ffffffc1] text-[#fff] p-4 px-3 rounded-xl text-lg' readOnly type="text" name='script' placeholder='Select Tag' />
               <button className='right-24 h-full p-4 rounded-xl px-14 text-lg font-medium bg-[#FDCA40] flex items-center justify-center'>Tag</button>
             </div>

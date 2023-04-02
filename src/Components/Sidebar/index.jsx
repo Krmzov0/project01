@@ -5,7 +5,6 @@ import { Home, Microphone2, Keyboard, VideoSquare, TrendUp, User, Profile2User }
 
 function SideBar() {
 
-
     return (
         <>
             <div className='sm:flex hidden left-0 w-96 xl:h-screen 2xl:h-screen bg-[#121212] flex-col justify-start border-r border-[#3B3B3B]'>
