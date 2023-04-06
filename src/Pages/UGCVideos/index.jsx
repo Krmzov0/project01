@@ -23,17 +23,31 @@ function UGCVideos() {
                 console.log(`Link "${fieldValue}" added to document with ID "${id}"`);
                 setFieldValue('');
 
-                toast.success(`Link attached to script with ID: "${id}"`, {
-                    style: {
-                        border: '2px solid #FDCA40',
-                        padding: '16px',
-                        color: '#1c1c1c',
-                    },
-                    iconTheme: {
-                        primary: '#FDCA40',
-                        secondary: '#FFFAEE',
-                    },
-                });
+                if (fieldValue === '') {
+                    toast.error('Field cannot be empty', {
+                        style: {
+                            border: '2px solid red',
+                            padding: '16px',
+                            color: '#1c1c1c',
+                        },
+                        iconTheme: {
+                            primary: 'red',
+                            secondary: '#FFFAEE',
+                        },
+                    });
+                } else {
+                    toast.success(`Link attached to script with ID: "${id}"`, {
+                        style: {
+                            border: '2px solid #FDCA40',
+                            padding: '16px',
+                            color: '#1c1c1c',
+                        },
+                        iconTheme: {
+                            primary: '#FDCA40',
+                            secondary: '#FFFAEE',
+                        },
+                    });
+                }
 
             })
             .catch((error) => {
@@ -144,7 +158,7 @@ function UGCVideos() {
                             </div>
                         </div>
 
-                        <Tooltip className='w-full' content="Paste the link here and click on the link icon to attach it" style='light'>
+                        <Tooltip content="Paste the link here and click on the link icon to attach it" style='light'>
                             <input className='hover:outline hover:outline-[#fff] transition-all bg-[#b4b4b42d] outline-none focus-visible:outline-2 focus-visible:outline-[#FDCA40] placeholder:text-[#ffffffc1] focus-within:outline-none  text-[#fff] p-4 px-3 rounded-xl text-lg hidden sm:flex w-96 mb-6 sm:mb-0 ' type="text" placeholder="Attach Link" value={fieldValue} onChange={(event) => setFieldValue(event.target.value)} required />
                         </Tooltip>
 
@@ -177,8 +191,6 @@ function UGCVideos() {
                                     <ScriptComponent key={index} script={script} handleAttachLink={handleAttachLink} fieldValue={fieldValue} setFieldValue={setFieldValue} toggleComplete={toggleComplete} delteScript={deleteScript} moveScript={moveScript} />
                                 ))}
                             </div>
-
-                            <div className='w-full py-3 bg-[#f7f7f717] rounded-br-lg rounded-bl-lg'></div>
                         </div>
                     </div>
 

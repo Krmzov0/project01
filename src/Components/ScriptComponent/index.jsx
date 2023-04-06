@@ -30,7 +30,7 @@ function ScriptComponent({ script, delteScript, toggleComplete, moveScript, hand
                             <input value={script.title} readOnly className={script.completed ? 'outline-none border-none cursor-default text-xl text-[#ffffff7e] line-through transition-all break-words bg-transparent w-[90%]' : ' outline-none border-none cursor-default w-full break-words transition-all text-xl text-[#fff] bg-transparent'} />
                             <div className='mt-4 h-[1px] w-[90%] bg-[#dbdbdb55]'></div>
                             {script?.scriptText ? <p className='w-56 xl:w-[30rem] 2xl:w-[50rem] h-max break-words mt-4 text-lg text-[#fff] select-text'>{script.scriptText}</p> : <p className='text-[#ffffffa1] text-lg mt-4'>No script text</p>}
-                            <Tooltip content="Click to open Link" style='light'>{script?.Link ? <h3 className='flex text-md mt-2 text-[#FDCA40]' ><a href={script.Link} target='blank' >Video Link</a></h3> : <h3 className='text-lg mt-2 text-[#ffffffa1]'>No script Link</h3>}</Tooltip>
+                            {script?.Link ? <Tooltip content="Open Link" style='light'><h3 className='flex text-md mt-2 text-[#FDCA40]' ><a href={script.Link} target='blank' >Video Link</a></h3></Tooltip> : <h3 className='hidden'></h3>}
                         </div>
                         <h3 className='flex sm:hidden text-[#ffffffd2]'>{script.createdAt?.toDate().toDateString()} {script.createdAt?.toDate().toLocaleTimeString()}</h3>
                     </div>
