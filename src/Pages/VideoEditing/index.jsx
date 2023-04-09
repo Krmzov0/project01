@@ -50,7 +50,7 @@ function VideoEditing() {
         });
     }
 
-    const moveScript = async (id) => {
+    const moveToUGC = async (id) => {
         const sourceDocRef = (doc(db, 'Videoediting', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
@@ -61,7 +61,7 @@ function VideoEditing() {
             await setDoc(targetDocRef, sourceDocData);
             await deleteDoc(sourceDocRef);
 
-            toast.success('Script created successfuly', {
+            toast.success('Script sent successfuly', {
                 style: {
                     border: '2px solid #FDCA40',
                     padding: '16px',
@@ -120,7 +120,7 @@ function VideoEditing() {
 
                             <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 sm:h-[23.3rem] relative scriptList overflow-hidden overflow-y-scroll'>
                                 {scripts.map((script, index) => (
-                                    <ScriptComponent key={index} script={script}  handleEdit={handleEdit} toggleComplete={toggleComplete} delteScript={deleteScript} moveScript={moveScript} />
+                                    <ScriptComponent key={index} script={script}  handleEdit={handleEdit} toggleComplete={toggleComplete} delteScript={deleteScript} moveToUGC={moveToUGC} />
                                 ))}
                             </div>
                         </div>

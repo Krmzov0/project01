@@ -6,7 +6,6 @@ import { db } from '../../firebase';
 import { collection, onSnapshot, query, deleteDoc, doc, updateDoc, setDoc, getDoc } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
-// import { UserAuth } from '../../Context/authContext';
 import { Tooltip } from 'flowbite-react'
 
 function UGCVideos() {
@@ -15,7 +14,7 @@ function UGCVideos() {
 
     const [fieldValue, setFieldValue] = useState('');
 
-    const handleAttachLink = (id, script) => {
+    const handleAttachLink = (id) => {
         const clickedDocRef = doc(collection(db, 'ugcVideos'), id);
         const updatedDoc = { Link: fieldValue };
         setDoc(clickedDocRef, updatedDoc, { merge: true })
@@ -106,18 +105,18 @@ function UGCVideos() {
         });
     }
 
-    const moveScript = async (id) => {
+    const moveToUGC = async (id) => {
         const sourceDocRef = (doc(db, 'ugcVideos', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
         if (sourceDocSnap.exists()) {
             const sourceDocData = sourceDocSnap.data();
-            const targetDocRef = (doc(db, 'Videoediting', id));
+            const targetDocRef = (doc(db, 'ugcVideos', id));
 
             await setDoc(targetDocRef, sourceDocData);
             await deleteDoc(sourceDocRef);
 
-            toast.success('Script created successfuly', {
+            toast.success('Script sent successfuly', {
                 style: {
                     border: '2px solid #FDCA40',
                     padding: '16px',
@@ -132,6 +131,98 @@ function UGCVideos() {
             console.log(`Document ${id} does not exist in the source collection.`);
         }
     };
+
+    const moveToVideoediting = async (id) => {
+        const sourceDocRef = (doc(db, 'ugcVideos', id));
+        const sourceDocSnap = await getDoc(sourceDocRef);
+
+        if (sourceDocSnap.exists()) {
+            const sourceDocData = sourceDocSnap.data();
+            const targetDocRef = (doc(db, 'Videoediting', id));
+
+            await setDoc(targetDocRef, sourceDocData);
+            await deleteDoc(sourceDocRef);
+
+            toast.success('Script sent successfuly', {
+                style: {
+                    border: '2px solid #FDCA40',
+                    padding: '16px',
+                    color: '#1c1c1c',
+                },
+                iconTheme: {
+                    primary: '#FDCA40',
+                    secondary: '#FFFAEE',
+                },
+            });
+        } else {
+            console.log(`Document ${id} does not exist in the source collection.`);
+        }
+    };
+
+    const moveToVoiceovers = async (id) => {
+        const sourceDocRef = (doc(db, 'ugcVideos', id));
+        const sourceDocSnap = await getDoc(sourceDocRef);
+
+        if (sourceDocSnap.exists()) {
+            const sourceDocData = sourceDocSnap.data();
+            const targetDocRef = (doc(db, 'Voiceovers', id));
+
+            await setDoc(targetDocRef, sourceDocData);
+            await deleteDoc(sourceDocRef);
+
+            toast.success('Script sent successfuly', {
+                style: {
+                    border: '2px solid #FDCA40',
+                    padding: '16px',
+                    color: '#1c1c1c',
+                },
+                iconTheme: {
+                    primary: '#FDCA40',
+                    secondary: '#FFFAEE',
+                },
+            });
+        } else {
+            console.log(`Document ${id} does not exist in the source collection.`);
+        }
+    };
+
+    // const handlePersonalScripts = async (id) => {
+    //     try {
+    //       const userCollectionsRef = collection(db, `${user.uid}`);
+    //       const newCollectionRef = doc(userCollectionsRef);
+    
+    //       await setDoc(newCollectionRef, { name: 'My Collection' });
+    
+    //       console.log('New collection created!', );
+    //     } catch (error) {
+    //       console.error('Error creating collection:', error);
+    //     }
+
+    //     const sourceDocRef = (doc(db, '', id));
+    //     const sourceDocSnap = await getDoc(sourceDocRef);
+
+    //     if (sourceDocSnap.exists()) {
+    //         const sourceDocData = sourceDocSnap.data();
+    //         const targetDocRef = (doc(db, user.uid, id));
+
+    //         await setDoc(targetDocRef, sourceDocData);
+    //         await deleteDoc(sourceDocRef);
+
+    //         toast.success('Script created successfuly', {
+    //             style: {
+    //                 border: '2px solid #FDCA40',
+    //                 padding: '16px',
+    //                 color: '#1c1c1c',
+    //             },
+    //             iconTheme: {
+    //                 primary: '#FDCA40',
+    //                 secondary: '#FFFAEE',
+    //             },
+    //         });
+    //     } else {
+    //         console.log(`Document ${id} does not exist in the source collection.`);
+    //     }
+    //   };
 
     return (
         <>
@@ -188,7 +279,7 @@ function UGCVideos() {
 
                             <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 xl:h-[20rem] 2xl:h-[30rem] relative scriptList overflow-hidden overflow-y-scroll '>
                                 {scripts.map((script, index) => (
-                                    <ScriptComponent key={index} script={script} handleAttachLink={handleAttachLink} fieldValue={fieldValue} setFieldValue={setFieldValue} toggleComplete={toggleComplete} delteScript={deleteScript} moveScript={moveScript} />
+                                    <ScriptComponent key={index} script={script} handleAttachLink={handleAttachLink} fieldValue={fieldValue} setFieldValue={setFieldValue} toggleComplete={toggleComplete} delteScript={deleteScript} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} />
                                 ))}
                             </div>
                         </div>
