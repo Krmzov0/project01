@@ -36,9 +36,9 @@ function ScriptComponent({ script, delteScript, handlePersonalScripts, toggleCom
                 <div className='w-full flex justify-between items-center'>
                     <div className='w-full flex flex-col gap-y-6'>
                         <div className='w-full flex flex-col justify-between items-start'>
-                            <div className='flex flex-col gap-y-2'>
+                            <div className='flex flex-col gap-y-2 w-[90%]'>
                                 <h3 className='text-md flex text-[#FDCA40] w-max'>{script.tagValue}</h3>
-                                <input value={script.title} readOnly className={script.completed ? 'outline-none border-none cursor-default text-xl text-[#ffffff7e] line-through transition-all break-words bg-transparent w-[90%]' : ' outline-none border-none cursor-default w-[90%] break-words transition-all text-xl text-[#fff] bg-transparent'} />
+                                <input value={script.title} readOnly className={script.completed ? 'outline-none cursor-default text-xl text-[#ffffff7e] line-through transition-all break-words bg-transparent w-full border-none' : ' outline-none cursor-default border-none w-full break-words transition-all text-xl text-[#fff] bg-transparent'} />
                             </div>
                             <div className='mt-4 h-[1px] w-[90%] bg-[#dbdbdb55]'></div>
                             {script?.scriptText ? <p className='w-56 xl:w-[30rem] 2xl:w-[50rem] h-max break-words mt-4 text-lg text-[#fff] select-text'>{script.scriptText}</p> : <p className='text-[#ffffffa1] text-lg mt-4'>No script text</p>}
