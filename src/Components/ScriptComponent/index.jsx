@@ -4,7 +4,7 @@ import './style.css'
 import { Tooltip } from 'flowbite-react'
 import { motion } from 'framer-motion'
 
-function ScriptComponent({ script, delteScript, toggleComplete, moveToUGC, moveToVoiceovers, handleAttachLink, moveToVideoediting, fieldValue, setFieldValue }) {
+function ScriptComponent({ script, delteScript, handlePersonalScripts, toggleComplete, moveToUGC, moveToVoiceovers, handleAttachLink, moveToVideoediting, fieldValue, setFieldValue }) {
 
     const [sendMenu, setsendMenu] = useState(false)
 
@@ -42,6 +42,16 @@ function ScriptComponent({ script, delteScript, toggleComplete, moveToUGC, moveT
                             </div>
                             <div className='mt-4 h-[1px] w-[90%] bg-[#dbdbdb55]'></div>
                             {script?.scriptText ? <p className='w-56 xl:w-[30rem] 2xl:w-[50rem] h-max break-words mt-4 text-lg text-[#fff] select-text'>{script.scriptText}</p> : <p className='text-[#ffffffa1] text-lg mt-4'>No script text</p>}
+                            <div className='w-10 h-[1px] bg-[#dbdbdb55] mt-4'></div>
+                            <div className='flex items-center gap-x-3 w-max mt-4'>
+                                <h3 className='text-[#FDCA40]'>Tags: </h3>
+                                <h4 className='text-[#ffffffdc]'>{script.tag1}</h4>
+                                <h4 className='text-[#ffffffdc]'>{script.tag2}</h4>
+                                <h4 className='text-[#ffffffdc]'>{script.tag3}</h4>
+                                <h4 className='text-[#ffffffdc]'>{script.tag4}</h4>
+                                <h4 className='text-[#ffffffdc]'>{script.tag5}</h4>
+                                <h4 className='text-[#ffffffdc]'>{script.tag6}</h4>
+                            </div>
                             {script?.Link ? <Tooltip content="Open Link" style='light'><h3 className='flex text-md mt-2 text-[#FDCA40]' ><a href={script.Link} target='blank' >Video Link</a></h3></Tooltip> : <h3 className='hidden'></h3>}
                             {sendMenu && (<motion.div initial={{ opacity: 0, y: -15 }} animate={{ opacity: 1, y: 0 }}><div className='w-max mt-3 relative'>
                                 <h4 className='text-[#dbdbdb]'>Send Script to:</h4>
@@ -66,9 +76,9 @@ function ScriptComponent({ script, delteScript, toggleComplete, moveToUGC, moveT
 
 
                 <div className='flex items-center w-max justify-between h-full'>
-                    <div className='hidden sm:flex flex-col h-full sm:flex-row items-start gap-x-[2.35rem]'>
+                    <div className='hidden sm:flex flex-col h-full sm:flex-row items-start gap-x-[2.42rem]'>
                         <Tooltip content="Pull to personal scripts" style='light'>
-                            <DocumentDownload aria-disabled size="25" color="#DBDBDB" />
+                            <DocumentDownload className='cursor-pointer' onClick={() => handlePersonalScripts(script.id)} aria-disabled size="25" color="#DBDBDB" />
                         </Tooltip>
                         <Tooltip content="Open Send Popup" style={'light'}>
                             <DirectSend size="25" color="#DBDBDB" className='cursor-pointer' onClick={handleSendMenu} />
@@ -80,9 +90,12 @@ function ScriptComponent({ script, delteScript, toggleComplete, moveToUGC, moveT
                         <Tooltip content="Complete" style={'light'}>
                             {script.completed ? <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer hidden sm:flex' size="25" color="#FDCA40" /> : <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />}
                         </Tooltip>
+                        
                         <Tooltip content="Delete" style={'light'}>
                             <Trash onClick={() => delteScript(script.id)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />
                         </Tooltip>
+
+                        
                     </div>
 
                     <div className='flex flex-col-reverse justify-between items-end h-full'>

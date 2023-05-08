@@ -7,12 +7,35 @@ import { collection, onSnapshot, query, deleteDoc, doc, updateDoc, setDoc, getDo
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { Tooltip } from 'flowbite-react'
+import { UserAuth } from '../../Context/authContext';
+// import { auth } from '../../firebase';
+// import { useNavigate } from "react-router-dom";
 
 function UGCVideos() {
+//joanne@leadvips.com
+
+    const { user } = UserAuth();
+
+    // const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     const unsubscribe = auth.onAuthStateChanged((user) => {
+    //         if (user && user.email === 'joanne@leadvips.com') {
+    //             console.log('fdsafs');
+    //         } else {
+    //             navigate("/");
+    //         }
+    //     });
+
+    //     return unsubscribe;
+    // }, []);
+
 
     const [scripts, setscripts] = useState([])
 
     const [fieldValue, setFieldValue] = useState('');
+
+    
 
     const handleAttachLink = (id) => {
         const clickedDocRef = doc(collection(db, 'ugcVideos'), id);
@@ -54,17 +77,6 @@ function UGCVideos() {
             });
     };
 
-    // useEffect(() => {
-    //     const { user } = UserAuth()
-
-    //     if (user && user.email !== 'smurfmail234@gmail.com') {
-    //         console.log('Back to mainPage');
-
-    //     } else {
-    //         console.log('access granted');
-    //     }
-
-    // });
 
     // const handleEdit = async (script, title, scriptText) => {
     //     await updateDoc(doc(db, 'ugcVideos', script.id), { title: title });
@@ -186,43 +198,34 @@ function UGCVideos() {
         }
     };
 
-    // const handlePersonalScripts = async (id) => {
-    //     try {
-    //       const userCollectionsRef = collection(db, `${user.uid}`);
-    //       const newCollectionRef = doc(userCollectionsRef);
-    
-    //       await setDoc(newCollectionRef, { name: 'My Collection' });
-    
-    //       console.log('New collection created!', );
-    //     } catch (error) {
-    //       console.error('Error creating collection:', error);
-    //     }
 
-    //     const sourceDocRef = (doc(db, '', id));
-    //     const sourceDocSnap = await getDoc(sourceDocRef);
 
-    //     if (sourceDocSnap.exists()) {
-    //         const sourceDocData = sourceDocSnap.data();
-    //         const targetDocRef = (doc(db, user.uid, id));
+    const handlePersonalScripts = async (id) => {
+        const sourceDocRef = (doc(db, 'ugcVideos', id));
+        const sourceDocSnap = await getDoc(sourceDocRef);
 
-    //         await setDoc(targetDocRef, sourceDocData);
-    //         await deleteDoc(sourceDocRef);
+        if (sourceDocSnap.exists()) {
+            const sourceDocData = sourceDocSnap.data();
+            const targetDocRef = (doc(db, `personalScripts/${user.uid}/userSpecificScripts`, id));
 
-    //         toast.success('Script created successfuly', {
-    //             style: {
-    //                 border: '2px solid #FDCA40',
-    //                 padding: '16px',
-    //                 color: '#1c1c1c',
-    //             },
-    //             iconTheme: {
-    //                 primary: '#FDCA40',
-    //                 secondary: '#FFFAEE',
-    //             },
-    //         });
-    //     } else {
-    //         console.log(`Document ${id} does not exist in the source collection.`);
-    //     }
-    //   };
+            await setDoc(targetDocRef, sourceDocData);
+            await deleteDoc(sourceDocRef);
+
+            toast.success('Pulled to Personal Scripts', {
+                style: {
+                    border: '2px solid #FDCA40',
+                    padding: '16px',
+                    color: '#1c1c1c',
+                },
+                iconTheme: {
+                    primary: '#FDCA40',
+                    secondary: '#FFFAEE',
+                },
+            });
+        } else {
+            console.log(`Document ${id} does not exist in the source collection.`);
+        }
+    };
 
     return (
         <>
@@ -267,9 +270,10 @@ function UGCVideos() {
                                         <h4 className='text-[#f7f7f7c2] text-md'>Get</h4>
                                         <h4 className='text-[#f7f7f7c2] text-md'>Send</h4>
                                         <h4 className='text-[#f7f7f7c2] text-md'>Link</h4>
-                                        {/* <h4 className='text-[#f7f7f7c2] text-md'>Edit</h4> */}
+
                                         <h4 className='text-[#f7f7f7c2] text-md'>Status</h4>
                                         <h4 className='text-[#f7f7f7c2] text-md'>Delete</h4>
+
                                     </div>
                                     <div>
                                         <h4 className='text-[#f7f7f7c2] text-md'>Created at</h4>
@@ -279,7 +283,7 @@ function UGCVideos() {
 
                             <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 xl:h-[20rem] 2xl:h-[30rem] relative scriptList overflow-hidden overflow-y-scroll '>
                                 {scripts.map((script, index) => (
-                                    <ScriptComponent key={index} script={script} handleAttachLink={handleAttachLink} fieldValue={fieldValue} setFieldValue={setFieldValue} toggleComplete={toggleComplete} delteScript={deleteScript} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} />
+                                    <ScriptComponent key={index} script={script} handleAttachLink={handleAttachLink} fieldValue={fieldValue} setFieldValue={setFieldValue} toggleComplete={toggleComplete} delteScript={deleteScript} handlePersonalScripts={handlePersonalScripts} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} />
                                 ))}
                             </div>
                         </div>
