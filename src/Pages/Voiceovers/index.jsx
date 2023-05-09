@@ -34,45 +34,45 @@ function Voiceovers() {
 
     
 
-    const handleAttachLink = (id) => {
-        const clickedDocRef = doc(collection(db, 'Voiceovers'), id);
-        const updatedDoc = { Link: fieldValue };
-        setDoc(clickedDocRef, updatedDoc, { merge: true })
-            .then(() => {
-                console.log(`Link "${fieldValue}" added to document with ID "${id}"`);
-                setFieldValue('');
+    // const handleAttachLink = (id) => {
+    //     const clickedDocRef = doc(collection(db, 'Voiceovers'), id);
+    //     const updatedDoc = { Link: fieldValue };
+    //     setDoc(clickedDocRef, updatedDoc, { merge: true })
+    //         .then(() => {
+    //             console.log(`Link "${fieldValue}" added to document with ID "${id}"`);
+    //             setFieldValue('');
 
-                if (fieldValue === '') {
-                    toast.error('Field cannot be empty', {
-                        style: {
-                            border: '2px solid red',
-                            padding: '16px',
-                            color: '#1c1c1c',
-                        },
-                        iconTheme: {
-                            primary: 'red',
-                            secondary: '#FFFAEE',
-                        },
-                    });
-                } else {
-                    toast.success(`Link attached to script with ID: "${id}"`, {
-                        style: {
-                            border: '2px solid #FDCA40',
-                            padding: '16px',
-                            color: '#1c1c1c',
-                        },
-                        iconTheme: {
-                            primary: '#FDCA40',
-                            secondary: '#FFFAEE',
-                        },
-                    });
-                }
+    //             if (fieldValue === '') {
+    //                 toast.error('Field cannot be empty', {
+    //                     style: {
+    //                         border: '2px solid red',
+    //                         padding: '16px',
+    //                         color: '#1c1c1c',
+    //                     },
+    //                     iconTheme: {
+    //                         primary: 'red',
+    //                         secondary: '#FFFAEE',
+    //                     },
+    //                 });
+    //             } else {
+    //                 toast.success(`Link attached to script with ID: "${id}"`, {
+    //                     style: {
+    //                         border: '2px solid #FDCA40',
+    //                         padding: '16px',
+    //                         color: '#1c1c1c',
+    //                     },
+    //                     iconTheme: {
+    //                         primary: '#FDCA40',
+    //                         secondary: '#FFFAEE',
+    //                     },
+    //                 });
+    //             }
 
-            })
-            .catch((error) => {
-                console.error(`Error adding link "${fieldValue}" to document with ID "${id}":`, error);
-            });
-    };
+    //         })
+    //         .catch((error) => {
+    //             console.error(`Error adding link "${fieldValue}" to document with ID "${id}":`, error);
+    //         });
+    // };
 
 
     // const handleEdit = async (script, title, scriptText) => {
@@ -195,6 +195,86 @@ function Voiceovers() {
         }
     };
 
+    const moveToZishan = async (id) => {
+        const sourceDocRef = (doc(db, 'Voiceovers', id));
+        const sourceDocSnap = await getDoc(sourceDocRef);
+
+        if (sourceDocSnap.exists()) {
+            const sourceDocData = sourceDocSnap.data();
+            const targetDocRef = (doc(db, 'Zishan', id));
+
+            await setDoc(targetDocRef, sourceDocData);
+            await deleteDoc(sourceDocRef);
+
+            toast.success('Script sent successfuly', {
+                style: {
+                    border: '2px solid #FDCA40',
+                    padding: '16px',
+                    color: '#1c1c1c',
+                },
+                iconTheme: {
+                    primary: '#FDCA40',
+                    secondary: '#FFFAEE',
+                },
+            });
+        } else {
+            console.log(`Document ${id} does not exist in the source collection.`);
+        }
+    };
+
+    const moveToSakina = async (id) => {
+        const sourceDocRef = (doc(db, 'Voiceovers', id));
+        const sourceDocSnap = await getDoc(sourceDocRef);
+
+        if (sourceDocSnap.exists()) {
+            const sourceDocData = sourceDocSnap.data();
+            const targetDocRef = (doc(db, 'Sakina', id));
+
+            await setDoc(targetDocRef, sourceDocData);
+            await deleteDoc(sourceDocRef);
+
+            toast.success('Script sent successfuly', {
+                style: {
+                    border: '2px solid #FDCA40',
+                    padding: '16px',
+                    color: '#1c1c1c',
+                },
+                iconTheme: {
+                    primary: '#FDCA40',
+                    secondary: '#FFFAEE',
+                },
+            });
+        } else {
+            console.log(`Document ${id} does not exist in the source collection.`);
+        }
+    };
+
+    const moveToHussein = async (id) => {
+        const sourceDocRef = (doc(db, 'Voiceovers', id));
+        const sourceDocSnap = await getDoc(sourceDocRef);
+
+        if (sourceDocSnap.exists()) {
+            const sourceDocData = sourceDocSnap.data();
+            const targetDocRef = (doc(db, 'Hussein', id));
+
+            await setDoc(targetDocRef, sourceDocData);
+            await deleteDoc(sourceDocRef);
+
+            toast.success('Script sent successfuly', {
+                style: {
+                    border: '2px solid #FDCA40',
+                    padding: '16px',
+                    color: '#1c1c1c',
+                },
+                iconTheme: {
+                    primary: '#FDCA40',
+                    secondary: '#FFFAEE',
+                },
+            });
+        } else {
+            console.log(`Document ${id} does not exist in the source collection.`);
+        }
+    };
 
 
     const handlePersonalScripts = async (id) => {
@@ -249,11 +329,7 @@ function Voiceovers() {
                             <h1 className='text-3xl sm:text-4xl text-[#dbdbdb] font-normal'>Voiceovers</h1>
                         </div>
                     </div>
-
-                    <Tooltip content="Paste the link here and click on the link icon to attach it" style='light'>
-                        <input className='hover:outline hover:outline-[#fff] transition-all bg-[#b4b4b42d] outline-none focus-visible:outline-2 focus-visible:outline-[#FDCA40] placeholder:text-[#ffffffc1] focus-within:outline-none  text-[#fff] p-4 px-3 rounded-xl text-lg hidden sm:flex w-96 mb-6 sm:mb-0 ' type="text" placeholder="Attach Link" value={fieldValue} onChange={(event) => setFieldValue(event.target.value)} required />
-                    </Tooltip>
-
+                    
                     <input className='hover:outline hover:outline-[#fff] transition-all bg-[#b4b4b42d] outline-none focus-visible:outline-2 focus-visible:outline-[#FDCA40] placeholder:text-[#ffffffc1] focus-within:outline-none  text-[#fff] p-4 px-3 rounded-xl text-lg w-full flex sm:hidden mb-6 sm:mb-0 ' type="text" placeholder="Attach Link" value={fieldValue} onChange={(event) => setFieldValue(event.target.value)} required />
                 </div>
 
@@ -267,8 +343,6 @@ function Voiceovers() {
                                 <div className='flex items-center gap-x-7'>
                                     <h4 className='text-[#f7f7f7c2] text-md'>Get</h4>
                                     <h4 className='text-[#f7f7f7c2] text-md'>Send</h4>
-                                    <h4 className='text-[#f7f7f7c2] text-md'>Link</h4>
-
                                     <h4 className='text-[#f7f7f7c2] text-md'>Status</h4>
                                     <h4 className='text-[#f7f7f7c2] text-md'>Delete</h4>
 
@@ -281,7 +355,7 @@ function Voiceovers() {
 
                         <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 xl:h-[20rem] 2xl:h-[30rem] relative scriptList overflow-hidden overflow-y-scroll '>
                             {scripts.map((script, index) => (
-                                <ScriptComponent key={index} script={script} handleAttachLink={handleAttachLink} fieldValue={fieldValue} setFieldValue={setFieldValue} toggleComplete={toggleComplete} delteScript={deleteScript} handlePersonalScripts={handlePersonalScripts} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} />
+                                <ScriptComponent key={index} script={script} fieldValue={fieldValue} setFieldValue={setFieldValue} toggleComplete={toggleComplete} delteScript={deleteScript} handlePersonalScripts={handlePersonalScripts} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} moveToZishan={moveToZishan} moveToSakina={moveToSakina} moveToHussein={moveToHussein} />
                             ))}
                         </div>
                     </div>

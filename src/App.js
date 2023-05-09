@@ -11,6 +11,9 @@ import AdLaunch from './Pages/AdLaunch'
 import CreateSript from './Pages/CreateScript';
 import Account from './Pages/Account';
 import Signin from './Pages/Signin';
+import Hussein from './Pages/Hussein'
+import Zishan from './Pages/Zishan'
+import Sakina from './Pages/Sakina'
 
 function App() {
 
@@ -28,6 +31,9 @@ function App() {
             <Route path='/voiceovers' element={<Voiceovers />} />
             <Route path='/video-editing' element={<VideoEditing />} />
             <Route path='/ad-launch' element={<AdLaunch />} />
+            <Route path='/ad-launch/zishan' element={<Zishan />} />
+            <Route path='/ad-launch/sakina' element={<Sakina />} />
+            <Route path='/ad-launch/hussein' element={<Hussein />} />
             <Route path='/create-script' element={<CreateSript />} />
             <Route path='/account' element={<Account />} />
             <Route path='/signin' element={<Signin />} />

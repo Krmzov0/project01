@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { TickSquare, Trash, DirectSend, DocumentDownload, Link } from 'iconsax-react'
+import { TickSquare, Trash, DirectSend, DocumentDownload, Link, VideoSquare, Microphone2 } from 'iconsax-react'
 import './style.css'
 import { Tooltip } from 'flowbite-react'
 import { motion } from 'framer-motion'
 
-function ScriptComponent({ script, delteScript, handlePersonalScripts, toggleComplete, moveToUGC, moveToVoiceovers, handleAttachLink, moveToVideoediting, fieldValue, setFieldValue }) {
+function ScriptComponent({ script, delteScript, handlePersonalScripts, toggleComplete, moveToUGC, moveToVoiceovers, handleAttachVideoLink, handleAttachUGCVideoLink, handleAttachVoiceoverLink, moveToVideoediting, moveToZishan, moveToSakina, moveToHussein }) {
 
     const [sendMenu, setsendMenu] = useState(false)
 
@@ -25,7 +25,6 @@ function ScriptComponent({ script, delteScript, handlePersonalScripts, toggleCom
                         <Trash onClick={() => delteScript(script.id)} className='flex sm:hidden' size="25" color="#DBDBDB" />
                     </div>
                     <div className='flex items-center gap-x-4'>
-                        <Link onClick={() => handleAttachLink(script.id)} size="25" color="#DBDBDB" className='right-[3px] relative cursor-pointer' />
                         <DocumentDownload size="25" color="#DBDBDB" />
                         <DirectSend size="25" color="#DBDBDB" className='cursor-pointer' onClick={handleSendMenu} />
                     </div>
@@ -52,7 +51,19 @@ function ScriptComponent({ script, delteScript, handlePersonalScripts, toggleCom
                                 <h4 className='text-[#ffffffdc]'>{script.tag5}</h4>
                                 <h4 className='text-[#ffffffdc]'>{script.tag6}</h4>
                             </div>
-                            {script?.Link ? <Tooltip content="Open Link" style='light'><h3 className='flex text-md mt-2 text-[#FDCA40]' ><a href={script.Link} target='blank' >Video Link</a></h3></Tooltip> : <h3 className='hidden'></h3>}
+                            <div className='flex items-center gap-x-4 mt-4'>
+                                {script?.VideoLink? <Tooltip content="Attach Video Link" style='light'><h3 className='flex text-md mt-2 text-[#FDCA40]' ><a href={script.VideoLink} target='_BLANK' >Video Link</a></h3></Tooltip> : <Tooltip content="Attach UGC Video Link" style={'light'}>
+                                    <VideoSquare onClick={() => handleAttachVideoLink(script.id)} size="25" color="#DBDBDB" className='right-[3px] relative cursor-pointer' />
+                                </Tooltip>}
+
+                                {script?.UGCVideoLink? <Tooltip content="Attach UGC Video Link" style='light'><h3 className='flex text-md mt-2 text-[#FDCA40]' ><a href={script.UGCVideoLink} target='_BLANK' >UGC Video Link</a></h3></Tooltip> : <Tooltip content="Attach UGC Video Link" style={'light'}>
+                                    <Link onClick={() => handleAttachUGCVideoLink(script.id)} size="25" color="#DBDBDB" className='right-[3px] relative cursor-pointer' />
+                                </Tooltip>}
+                        
+                                {script?.VoiceoverLink ? <Tooltip content="Attach Video Link" style='light'><h3 className='flex text-md mt-2 text-[#FDCA40]' ><a href={script.VoiceoverLink} target='_BLANK' >Voiceover Link</a></h3></Tooltip> : <Tooltip content="Attach Voiceover Link" style={'light'}>
+                                    <Microphone2 onClick={() => handleAttachVoiceoverLink(script.id)} size="25" color="#DBDBDB" className='right-[3px] relative cursor-pointer' />
+                                </Tooltip>}
+                            </div>
                             {sendMenu && (<motion.div initial={{ opacity: 0, y: -15 }} animate={{ opacity: 1, y: 0 }}><div className='w-max mt-3 relative'>
                                 <h4 className='text-[#dbdbdb]'>Send Script to:</h4>
                                 <div className='flex flex-col items-start gap-y-2 mt-2'>
@@ -62,9 +73,9 @@ function ScriptComponent({ script, delteScript, handlePersonalScripts, toggleCom
                                         <button onClick={() => moveToVideoediting(script.id)} className='px-2 py-2 w-32 flex justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Video editing</button>
                                     </div>
                                     <div className='flex items-center gap-x-2'>
-                                        <button className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Zishan</button>
-                                        <button className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Sakina</button>
-                                        <button className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Hussein</button>
+                                        <button onClick={() => moveToZishan(script.id)} className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Zishan</button>
+                                        <button onClick={() => moveToSakina(script.id)} className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Sakina</button>
+                                        <button onClick={() => moveToHussein(script.id)} className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Hussein</button>
                                     </div>
                                 </div>
                             </div> </motion.div>)}
@@ -78,24 +89,20 @@ function ScriptComponent({ script, delteScript, handlePersonalScripts, toggleCom
                 <div className='flex items-center w-max justify-between h-full'>
                     <div className='hidden sm:flex flex-col h-full sm:flex-row items-start gap-x-[2.42rem]'>
                         <Tooltip content="Pull to personal scripts" style='light'>
-                            <DocumentDownload className='cursor-pointer' onClick={() => handlePersonalScripts(script.id)} aria-disabled size="25" color="#DBDBDB" />
+                            <DocumentDownload className='cursor-pointer right-1 relative' onClick={() => handlePersonalScripts(script.id)} aria-disabled size="25" color="#DBDBDB" />
                         </Tooltip>
                         <Tooltip content="Open Send Popup" style={'light'}>
-                            <DirectSend size="25" color="#DBDBDB" className='cursor-pointer' onClick={handleSendMenu} />
+                            <DirectSend size="25" color="#DBDBDB" className='cursor-pointer right-2 relative' onClick={handleSendMenu} />
                         </Tooltip>
-                        <Tooltip content="Attach Link" style={'light'}>
-                            <Link onClick={() => handleAttachLink(script.id)} size="25" color="#DBDBDB" className='right-[3px] relative cursor-pointer' />
-                        </Tooltip>
+
                         {/* <Edit onClick={() => handleEdit(script, newTitle)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" /> */}
                         <Tooltip content="Complete" style={'light'}>
-                            {script.completed ? <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer hidden sm:flex' size="25" color="#FDCA40" /> : <TickSquare onClick={() => toggleComplete(script)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />}
+                            {script.completed ? <TickSquare onClick={() => toggleComplete(script)} className='right-1 relative cursor-pointer hidden sm:flex' size="25" color="#FDCA40" /> : <TickSquare onClick={() => toggleComplete(script)} className='right-1 relative cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />}
                         </Tooltip>
-                        
+
                         <Tooltip content="Delete" style={'light'}>
                             <Trash onClick={() => delteScript(script.id)} className='cursor-pointer hidden sm:flex' size="25" color="#DBDBDB" />
                         </Tooltip>
-
-                        
                     </div>
 
                     <div className='flex flex-col-reverse justify-between items-end h-full'>

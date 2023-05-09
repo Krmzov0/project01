@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './style.css'
-import { Home, Microphone2, Keyboard, VideoSquare, TrendUp, User, Profile2User } from 'iconsax-react'
+import { Home, Microphone2, Keyboard, VideoSquare, TrendUp, User } from 'iconsax-react'
 
 function SideBar() {
 
@@ -15,12 +15,11 @@ function SideBar() {
                         <h1 className='text-md font-medium tracking-wide text-[#B4B4B4]'>MENU</h1>
                         <Link className=' text-xl text-[#FDCA40] sideLink relative gap-x-5 flex items-center' to='/'><Home className='xl:w-7 2xl:w-max' size="32" color="#FDCA40"/> Dashboard</Link>
                         <Link className=' text-xl text-[#DBDBDB] sideLink relative gap-x-5 flex items-center' to='/copywriting'><Keyboard className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb"/> Copywriting</Link>
-                        <Link className=' text-xl text-[#DBDBDB] sideLink relative gap-x-5 flex items-center' to='/ugc-videos'><VideoSquare className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb"/> UGC Videos</Link>
-                        <Link className=' text-xl text-[#DBDBDB] sideLink relative gap-x-5 flex items-center' to='/voiceovers'><Microphone2 className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb"/> Voiceovers</Link>
+                        <Link className=' text-xl text-[#DBDBDB] sideLink relative gap-x-5 flex items-center' to='/voiceovers'><Microphone2 className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb"/>  Voiceovers</Link>
+                        <Link className=' text-xl text-[#DBDBDB] sideLink relative gap-x-5 flex items-center' to='/ugc-videos '><VideoSquare className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb"/> UGC Videos</Link>
                         <Link className=' text-xl text-[#DBDBDB] sideLink relative gap-x-5 flex items-center' to='/video-editing'><VideoSquare className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb"/> Video editing</Link>
                         <Link className=' text-xl text-[#DBDBDB] sideLink relative gap-x-5 flex items-center' to='/ad-launch'><TrendUp className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb"/> Ad Launch</Link>
                         <div className='w-10 h-[2px] bg-[#FDCA40] rounded-2xl'></div>
-                        <Link className=' text-xl text-[#DBDBDB] flex sideLink relative items-center gap-x-5' to='/employees'><Profile2User className='xl:w-7 2xl:w-max' size="32" color="#dbdbdb" /> Employees</Link>
                     </div>
 
                     <div className='flex flex-col gap-y-7'>

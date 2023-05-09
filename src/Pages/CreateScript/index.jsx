@@ -147,10 +147,94 @@ function CreateSript() {
     }
   };
 
-  const AdLaunchSubmit = async (e) => {
+  const ZishanSubmit = async (e) => {
     e.preventDefault();
     if (title !== "") {
-      await addDoc(collection(db, "adLaunch"), {
+      await addDoc(collection(db, "Zishan"), {
+        title,
+        scriptText,
+        tag1,
+        tag2,
+        tag3,
+        tag4,
+        tag5,
+        tag6,
+        completed: false,
+        createdAt: serverTimestamp(),
+      });
+      setTitle("");
+      toast.success('Script created successfuly', {
+        style: {
+          border: '2px solid #FDCA40',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: '#FDCA40',
+          secondary: '#FFFAEE',
+        },
+      });
+    } else {
+      toast.error('Field cannot be empty', {
+        style: {
+          border: '2px solid red',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE',
+        },
+      });
+    }
+  };
+
+  const SakinaSubmit = async (e) => {
+    e.preventDefault();
+    if (title !== "") {
+      await addDoc(collection(db, "Sakina"), {
+        title,
+        scriptText,
+        tag1,
+        tag2,
+        tag3,
+        tag4,
+        tag5,
+        tag6,
+        completed: false,
+        createdAt: serverTimestamp(),
+      });
+      setTitle("");
+      toast.success('Script created successfuly', {
+        style: {
+          border: '2px solid #FDCA40',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: '#FDCA40',
+          secondary: '#FFFAEE',
+        },
+      });
+    } else {
+      toast.error('Field cannot be empty', {
+        style: {
+          border: '2px solid red',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE',
+        },
+      });
+    }
+  };
+
+  const HusseinSubmit = async (e) => {
+    e.preventDefault();
+    if (title !== "") {
+      await addDoc(collection(db, "Hussein"), {
         title,
         scriptText,
         tag1,
@@ -190,7 +274,6 @@ function CreateSript() {
   };
 
 
-
   return (
     <>
 
@@ -228,7 +311,9 @@ function CreateSript() {
               <button onClick={UGCVideosSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>UGC Videos</button>
               <button onClick={VoiceoversSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Voiceovers</button>
               <button onClick={VideoeditingSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Video editing</button>
-              <button onClick={AdLaunchSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Ad launch</button>
+              <button onClick={ZishanSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Zishan</button>
+              <button onClick={SakinaSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Sakina</button>
+              <button onClick={HusseinSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Hussein</button>
             </div>
           </div>
         </div>
