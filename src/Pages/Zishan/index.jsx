@@ -346,7 +346,6 @@ function UGCVideos() {
                                     <div className='flex items-center gap-x-7'>
                                         <h4 className='text-[#f7f7f7c2] text-md'>Get</h4>
                                         <h4 className='text-[#f7f7f7c2] text-md'>Send</h4>
-                                        <h4 className='text-[#f7f7f7c2] text-md'>Link</h4>
 
                                         <h4 className='text-[#f7f7f7c2] text-md'>Status</h4>
                                         <h4 className='text-[#f7f7f7c2] text-md'>Delete</h4>
