@@ -517,7 +517,7 @@ const moveToDanyal= async (id) => {
                     </div>
                   </div>
 
-                  <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 xl:h-[16rem] 2xl:h-[30rem] relative scriptList overflow-hidden overflow-y-scroll'>
+                  <div className='flex flex-col gap-y-3 sm:gap-y-0 xl:h-[15rem] 2xl:h-[25rem] relative scriptList overflow-hidden overflow-y-scroll '>
                     {fetchedData.map((script, index) => (
                       <ScriptComponent moveToAlex={moveToAlex} moveToMeri={moveToMeri} moveToDanyal={moveToDanyal}key={index} handleAttachVoiceoverLink={handleAttachVoiceoverLink} handleAttachUGCVideoLink={handleAttachUGCVideoLink} handleAttachVideoLink={handleAttachVideoLink} script={script} fieldValue1={fieldValue1} setFieldValue1={setFieldValue1} fieldValue2={fieldValue2} setFieldValue2={setFieldValue2} fieldValue3={fieldValue3} setFieldValue3={setFieldValue3} toggleComplete={toggleComplete} delteScript={deleteScript} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} moveToZishan={moveToZishan} moveToSakina={moveToSakina} moveToHussein={moveToHussein} />
                     ))}
