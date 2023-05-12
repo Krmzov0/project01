@@ -84,7 +84,7 @@ function UGCVideos() {
     // }
 
     useEffect(() => {
-        const q = query(collection(db, 'Sakina'))
+        const q = query(collection(db, 'Meri'))
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             let scriptsArr = []
             querySnapshot.forEach((doc) => {
@@ -96,13 +96,13 @@ function UGCVideos() {
     }, [])
 
     const toggleComplete = async (script) => {
-        await updateDoc(doc(db, 'Sakina', script.id), {
+        await updateDoc(doc(db, 'Meri', script.id), {
             completed: !script.completed
         })
     }
 
     const deleteScript = async (id) => {
-        await deleteDoc(doc(db, 'Sakina', id));
+        await deleteDoc(doc(db, 'Meri', id));
 
         toast.success('Script Deleted successfuly', {
             style: {
@@ -118,7 +118,7 @@ function UGCVideos() {
     }
 
     const moveToUGC = async (id) => {
-        const sourceDocRef = (doc(db, 'Sakina', id));
+        const sourceDocRef = (doc(db, 'Meri', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
         if (sourceDocSnap.exists()) {
@@ -145,7 +145,7 @@ function UGCVideos() {
     };
 
     const moveToVideoediting = async (id) => {
-        const sourceDocRef = (doc(db, 'Sakina', id));
+        const sourceDocRef = (doc(db, 'Meri', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
         if (sourceDocSnap.exists()) {
@@ -172,7 +172,7 @@ function UGCVideos() {
     };
 
     const moveToVoiceovers = async (id) => {
-        const sourceDocRef = (doc(db, 'Sakina', id));
+        const sourceDocRef = (doc(db, 'Meri', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
         if (sourceDocSnap.exists()) {
@@ -201,7 +201,7 @@ function UGCVideos() {
 
 
     const handlePersonalScripts = async (id) => {
-        const sourceDocRef = (doc(db, 'Sakina', id));
+        const sourceDocRef = (doc(db, 'Meri', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
         if (sourceDocSnap.exists()) {
@@ -228,7 +228,7 @@ function UGCVideos() {
     };
 
     const moveToZishan = async (id) => {
-        const sourceDocRef = (doc(db, 'Sakina', id));
+        const sourceDocRef = (doc(db, 'Meri', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
         if (sourceDocSnap.exists()) {
@@ -255,7 +255,7 @@ function UGCVideos() {
     };
 
     const moveToSakina = async (id) => {
-        const sourceDocRef = (doc(db, 'Sakina', id));
+        const sourceDocRef = (doc(db, 'Meri', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
         if (sourceDocSnap.exists()) {
@@ -282,7 +282,7 @@ function UGCVideos() {
     };
 
     const moveToHussein = async (id) => {
-        const sourceDocRef = (doc(db, 'Sakina', id));
+        const sourceDocRef = (doc(db, 'Meri', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
         if (sourceDocSnap.exists()) {
@@ -309,7 +309,7 @@ function UGCVideos() {
     };
 
     const moveToAlex= async (id) => {
-        const sourceDocRef = (doc(db, 'Sakina', id));
+        const sourceDocRef = (doc(db, 'Meri', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
         if (sourceDocSnap.exists()) {
@@ -336,7 +336,7 @@ function UGCVideos() {
     };
 
     const moveToMeri = async (id) => {
-        const sourceDocRef = (doc(db, 'Sakina', id));
+        const sourceDocRef = (doc(db, 'Meri', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
         if (sourceDocSnap.exists()) {
@@ -363,7 +363,7 @@ function UGCVideos() {
     };
 
     const moveToDanyal= async (id) => {
-        const sourceDocRef = (doc(db, 'Sakina', id));
+        const sourceDocRef = (doc(db, 'Meri', id));
         const sourceDocSnap = await getDoc(sourceDocRef);
 
         if (sourceDocSnap.exists()) {
@@ -406,11 +406,11 @@ function UGCVideos() {
                     <div className='flex flex-col sm:flex-row w-full items-start justify-between '>
                         <div className='gap-y-4 w-full sm:gap-y-8 flex flex-col'>
                             <div className='flex justify-between items-center'>
-                                <h4 className='text-md flex items-center gap-x-2 text-[#B4B4B4]'><Link to='/'>DASHBOARD</Link> <ArrowRight2 className='w-4 sm:w-max' size="19" color="#B4B4B4" /> <Link to='/ad-launch/sakina'>SAKINA</Link></h4>
+                                <h4 className='text-md flex items-center gap-x-2 text-[#B4B4B4]'><Link to='/'>DASHBOARD</Link> <ArrowRight2 className='w-4 sm:w-max' size="19" color="#B4B4B4" /> <Link to='/ad-launch/meri'>MERI</Link></h4>
                             </div>
 
                             <div className='flex pb-10 justify-between items-center'>
-                                <h1 className='text-3xl sm:text-4xl text-[#dbdbdb] font-normal'>Sakina</h1>
+                                <h1 className='text-3xl sm:text-4xl text-[#dbdbdb] font-normal'>Meri</h1>
                             </div>
                         </div>
 
@@ -427,7 +427,7 @@ function UGCVideos() {
                                     <div className='flex items-center gap-x-7'>
                                         <h4 className='text-[#f7f7f7c2] text-md'>Get</h4>
                                         <h4 className='text-[#f7f7f7c2] text-md'>Send</h4>
-                                       
+                                     
 
                                         <h4 className='text-[#f7f7f7c2] text-md'>Status</h4>
                                         <h4 className='text-[#f7f7f7c2] text-md'>Delete</h4>
@@ -441,7 +441,7 @@ function UGCVideos() {
 
                             <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 xl:h-[20rem] 2xl:h-[30rem] relative scriptList overflow-hidden overflow-y-scroll '>
                                 {scripts.map((script, index) => (
-                                    <ScriptComponent moveToAlex={moveToAlex} moveToMeri={moveToMeri} moveToDanyal={moveToDanyal} key={index} script={script} fieldValue={fieldValue} setFieldValue={setFieldValue} toggleComplete={toggleComplete} delteScript={deleteScript} handlePersonalScripts={handlePersonalScripts} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} moveToZishan={moveToZishan} moveToSakina={moveToSakina} moveToHussein={moveToHussein} />
+                                    <ScriptComponent key={index} script={script} fieldValue={fieldValue} setFieldValue={setFieldValue} toggleComplete={toggleComplete} delteScript={deleteScript} handlePersonalScripts={handlePersonalScripts} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} moveToZishan={moveToZishan} moveToSakina={moveToSakina} moveToHussein={moveToHussein} moveToAlex={moveToAlex} moveToMeri={moveToMeri} moveToDanyal={moveToDanyal} />
                                 ))}
                             </div>
                         </div>

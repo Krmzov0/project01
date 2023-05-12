@@ -273,6 +273,132 @@ function CreateSript() {
     }
   };
 
+  const AlexSubmit = async (e) => {
+    e.preventDefault();
+    if (title !== "") {
+      await addDoc(collection(db, "alex"), {
+        title,
+        scriptText,
+        tag1,
+        tag2,
+        tag3,
+        tag4,
+        tag5,
+        tag6,
+        completed: false,
+        createdAt: serverTimestamp(),
+      });
+      setTitle("");
+      toast.success('Script created successfuly', {
+        style: {
+          border: '2px solid #FDCA40',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: '#FDCA40',
+          secondary: '#FFFAEE',
+        },
+      });
+    } else {
+      toast.error('Field cannot be empty', {
+        style: {
+          border: '2px solid red',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE',
+        },
+      });
+    }
+  };
+
+  const MeriSubmit = async (e) => {
+    e.preventDefault();
+    if (title !== "") {
+      await addDoc(collection(db, "Meri"), {
+        title,
+        scriptText,
+        tag1,
+        tag2,
+        tag3,
+        tag4,
+        tag5,
+        tag6,
+        completed: false,
+        createdAt: serverTimestamp(),
+      });
+      setTitle("");
+      toast.success('Script created successfuly', {
+        style: {
+          border: '2px solid #FDCA40',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: '#FDCA40',
+          secondary: '#FFFAEE',
+        },
+      });
+    } else {
+      toast.error('Field cannot be empty', {
+        style: {
+          border: '2px solid red',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE',
+        },
+      });
+    }
+  };
+
+  const DanyalSubmit = async (e) => {
+    e.preventDefault();
+    if (title !== "") {
+      await addDoc(collection(db, "danyal"), {
+        title,
+        scriptText,
+        tag1,
+        tag2,
+        tag3,
+        tag4,
+        tag5,
+        tag6,
+        completed: false,
+        createdAt: serverTimestamp(),
+      });
+      setTitle("");
+      toast.success('Script created successfuly', {
+        style: {
+          border: '2px solid #FDCA40',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: '#FDCA40',
+          secondary: '#FFFAEE',
+        },
+      });
+    } else {
+      toast.error('Field cannot be empty', {
+        style: {
+          border: '2px solid red',
+          padding: '16px',
+          color: '#1c1c1c',
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE',
+        },
+      });
+    }
+  };
+
 
   return (
     <>
@@ -314,6 +440,9 @@ function CreateSript() {
               <button onClick={ZishanSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Zishan</button>
               <button onClick={SakinaSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Sakina</button>
               <button onClick={HusseinSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Hussein</button>
+              <button onClick={AlexSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Alex</button>
+              <button onClick={MeriSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Meri</button>
+              <button onClick={DanyalSubmit} className='transition-all hover:bg-transparent hover:text-[#fff] border-2 border-[#FDCA40] w-full sm:w-64 px-14 py-3 bg-[#FDCA40] text-xl text-[#000] font-medium rounded-xl'>Danyal</button>
             </div>
           </div>
         </div>

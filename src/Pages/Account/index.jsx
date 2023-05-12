@@ -45,6 +45,7 @@ function Account() {
                             <div className='flex flex-col gap-y-0 sm:gap-y-2'>
                                 {user?.displayName ? <h1 className='text-2xl sm:text-3xl text-[#dbdbdb]'>{user.displayName}</h1> : <div className='hidden'></div>}
                                 {user?.displayName ? <h3 className='text-lg  sm:text-xl text-[#B4B4B4]'>{user.email}</h3> : <button className='p-4 border w-max flex text-xl text-[#FDCA40] border-[#FDCA40] rounded-xl' onClick={handleGoogleSignIn}>Sign in with Google</button>}
+                                {user?.phoneNumber ? <h3 className='text-lg  sm:text-xl text-[#B4B4B4]'>{user.phoneNumber}</h3> : <div className='hidden'>No phone number</div>}
                             </div>
                         </div>
 

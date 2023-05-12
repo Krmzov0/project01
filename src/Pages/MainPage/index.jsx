@@ -245,34 +245,6 @@ function MainPage() {
   };
 
 
-  const handlePersonalScripts = async (id) => {
-    const sourceDocRef = (doc(db, `personalScripts/${user.uid}/userSpecificScripts`, id));
-    const sourceDocSnap = await getDoc(sourceDocRef);
-
-    if (sourceDocSnap.exists()) {
-      const sourceDocData = sourceDocSnap.data();
-      const targetDocRef = (doc(db, `personalScripts/${user.uid}/userSpecificScripts`, id));
-
-      await setDoc(targetDocRef, sourceDocData);
-      await deleteDoc(sourceDocRef);
-
-      toast.success('Pulled to Personal Scripts', {
-        style: {
-          border: '2px solid #FDCA40',
-          padding: '16px',
-          color: '#1c1c1c',
-        },
-        iconTheme: {
-          primary: '#FDCA40',
-          secondary: '#FFFAEE',
-        },
-      });
-    } else {
-      console.log(`Document ${id} does not exist in the source collection.`);
-    }
-  };
-
-
   /////////////////////////////////////////////////////
 
   const handleAttachVideoLink = (id) => {
@@ -396,6 +368,88 @@ function MainPage() {
   };
 
 
+  const moveToAlex= async (id) => {
+    const sourceDocRef = (doc(db, `personalScripts/${user.uid}/userSpecificScripts`, id));
+    const sourceDocSnap = await getDoc(sourceDocRef);
+
+    if (sourceDocSnap.exists()) {
+        const sourceDocData = sourceDocSnap.data();
+        const targetDocRef = (doc(db, 'alex', id));
+
+        await setDoc(targetDocRef, sourceDocData);
+        await deleteDoc(sourceDocRef);
+
+        toast.success('Script sent successfuly', {
+            style: {
+                border: '2px solid #FDCA40',
+                padding: '16px',
+                color: '#1c1c1c',
+            },
+            iconTheme: {
+                primary: '#FDCA40',
+                secondary: '#FFFAEE',
+            },
+        });
+    } else {
+        console.log(`Document ${id} does not exist in the source collection.`);
+    }
+};
+
+const moveToMeri = async (id) => {
+    const sourceDocRef = (doc(db, `personalScripts/${user.uid}/userSpecificScripts`, id));
+    const sourceDocSnap = await getDoc(sourceDocRef);
+
+    if (sourceDocSnap.exists()) {
+        const sourceDocData = sourceDocSnap.data();
+        const targetDocRef = (doc(db, 'Meri', id));
+
+        await setDoc(targetDocRef, sourceDocData);
+        await deleteDoc(sourceDocRef);
+
+        toast.success('Script sent successfuly', {
+            style: {
+                border: '2px solid #FDCA40',
+                padding: '16px',
+                color: '#1c1c1c',
+            },
+            iconTheme: {
+                primary: '#FDCA40',
+                secondary: '#FFFAEE',
+            },
+        });
+    } else {
+        console.log(`Document ${id} does not exist in the source collection.`);
+    }
+};
+
+const moveToDanyal= async (id) => {
+    const sourceDocRef = (doc(db, `personalScripts/${user.uid}/userSpecificScripts`, id));
+    const sourceDocSnap = await getDoc(sourceDocRef);
+
+    if (sourceDocSnap.exists()) {
+        const sourceDocData = sourceDocSnap.data();
+        const targetDocRef = (doc(db, 'danyal', id));
+
+        await setDoc(targetDocRef, sourceDocData);
+        await deleteDoc(sourceDocRef);
+
+        toast.success('Script sent successfuly', {
+            style: {
+                border: '2px solid #FDCA40',
+                padding: '16px',
+                color: '#1c1c1c',
+            },
+            iconTheme: {
+                primary: '#FDCA40',
+                secondary: '#FFFAEE',
+            },
+        });
+    } else {
+        console.log(`Document ${id} does not exist in the source collection.`);
+    }
+};
+
+
 
   return (
     <>
@@ -463,16 +517,16 @@ function MainPage() {
                     </div>
                   </div>
 
-                  <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 xl:h-[20rem] 2xl:h-[30rem] relative scriptList overflow-hidden overflow-y-scroll '>
+                  <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 xl:h-[16rem] 2xl:h-[30rem] relative scriptList overflow-hidden overflow-y-scroll'>
                     {fetchedData.map((script, index) => (
-                      <ScriptComponent key={index} handleAttachVoiceoverLink={handleAttachVoiceoverLink} handleAttachUGCVideoLink={handleAttachUGCVideoLink} handleAttachVideoLink={handleAttachVideoLink} script={script} fieldValue1={fieldValue1} setFieldValue1={setFieldValue1} fieldValue2={fieldValue2} setFieldValue2={setFieldValue2} fieldValue3={fieldValue3} setFieldValue3={setFieldValue3} toggleComplete={toggleComplete} delteScript={deleteScript} handlePersonalScripts={handlePersonalScripts} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} moveToZishan={moveToZishan} moveToSakina={moveToSakina} moveToHussein={moveToHussein} />
+                      <ScriptComponent moveToAlex={moveToAlex} moveToMeri={moveToMeri} moveToDanyal={moveToDanyal}key={index} handleAttachVoiceoverLink={handleAttachVoiceoverLink} handleAttachUGCVideoLink={handleAttachUGCVideoLink} handleAttachVideoLink={handleAttachVideoLink} script={script} fieldValue1={fieldValue1} setFieldValue1={setFieldValue1} fieldValue2={fieldValue2} setFieldValue2={setFieldValue2} fieldValue3={fieldValue3} setFieldValue3={setFieldValue3} toggleComplete={toggleComplete} delteScript={deleteScript} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} moveToZishan={moveToZishan} moveToSakina={moveToSakina} moveToHussein={moveToHussein} />
                     ))}
 
                   </div>
                 </div>
               </div>// Add a conditional check to ensure data is available
             ) : (
-              <p>Your scripts will appear here when you pull them</p>
+              <p className='mt-3 text-[#dbdbdbdb]'>Your scripts will appear here when you pull them</p>
             )}
           </div>
         </div>

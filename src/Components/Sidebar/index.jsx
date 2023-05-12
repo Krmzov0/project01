@@ -10,7 +10,7 @@ function SideBar() {
             <div className='sm:flex hidden left-0 w-96 xl:h-screen 2xl:h-screen bg-[#121212] flex-col justify-start border-r border-[#3B3B3B]'>
             <Link to='/' ><h1 className='flex text-[#fff] text-3xl px-7 xl:h-24 2xl:h-28 justify-start items-center font-light border-b border-[#3B3B3B] gap-x-1 '>Lead <span className='text-[#FDCA40]'>VIPS</span></h1></Link>
 
-                <div className='px-7 h-full relative top-0 flex flex-col justify-between xl:gap-y-4 2xl:gap-y-0 xl:py-8 2xl:py-12'>
+                <div className='px-7 h-full relative top-0 flex flex-col justify-between xl:gap-y-4 2xl:gap-y-0 xl:py-8 2xl:py-12 xl:pb-20 2xl:pb-20'>
                     <div className='flex flex-col gap-y-7'>
                         <h1 className='text-md font-medium tracking-wide text-[#B4B4B4]'>MENU</h1>
                         <Link className=' text-xl text-[#FDCA40] sideLink relative gap-x-5 flex items-center' to='/'><Home className='xl:w-7 2xl:w-max' size="32" color="#FDCA40"/> Dashboard</Link>

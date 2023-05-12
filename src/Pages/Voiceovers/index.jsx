@@ -304,6 +304,87 @@ function Voiceovers() {
         }
     };
 
+    const moveToAlex= async (id) => {
+        const sourceDocRef = (doc(db, 'Voiceovers', id));
+        const sourceDocSnap = await getDoc(sourceDocRef);
+
+        if (sourceDocSnap.exists()) {
+            const sourceDocData = sourceDocSnap.data();
+            const targetDocRef = (doc(db, 'alex', id));
+
+            await setDoc(targetDocRef, sourceDocData);
+            await deleteDoc(sourceDocRef);
+
+            toast.success('Script sent successfuly', {
+                style: {
+                    border: '2px solid #FDCA40',
+                    padding: '16px',
+                    color: '#1c1c1c',
+                },
+                iconTheme: {
+                    primary: '#FDCA40',
+                    secondary: '#FFFAEE',
+                },
+            });
+        } else {
+            console.log(`Document ${id} does not exist in the source collection.`);
+        }
+    };
+
+    const moveToMeri = async (id) => {
+        const sourceDocRef = (doc(db, 'Voiceovers', id));
+        const sourceDocSnap = await getDoc(sourceDocRef);
+
+        if (sourceDocSnap.exists()) {
+            const sourceDocData = sourceDocSnap.data();
+            const targetDocRef = (doc(db, 'Meri', id));
+
+            await setDoc(targetDocRef, sourceDocData);
+            await deleteDoc(sourceDocRef);
+
+            toast.success('Script sent successfuly', {
+                style: {
+                    border: '2px solid #FDCA40',
+                    padding: '16px',
+                    color: '#1c1c1c',
+                },
+                iconTheme: {
+                    primary: '#FDCA40',
+                    secondary: '#FFFAEE',
+                },
+            });
+        } else {
+            console.log(`Document ${id} does not exist in the source collection.`);
+        }
+    };
+
+    const moveToDanyal= async (id) => {
+        const sourceDocRef = (doc(db, 'Voiceovers', id));
+        const sourceDocSnap = await getDoc(sourceDocRef);
+
+        if (sourceDocSnap.exists()) {
+            const sourceDocData = sourceDocSnap.data();
+            const targetDocRef = (doc(db, 'danyal', id));
+
+            await setDoc(targetDocRef, sourceDocData);
+            await deleteDoc(sourceDocRef);
+
+            toast.success('Script sent successfuly', {
+                style: {
+                    border: '2px solid #FDCA40',
+                    padding: '16px',
+                    color: '#1c1c1c',
+                },
+                iconTheme: {
+                    primary: '#FDCA40',
+                    secondary: '#FFFAEE',
+                },
+            });
+        } else {
+            console.log(`Document ${id} does not exist in the source collection.`);
+        }
+    };
+
     return (
 
         <>
@@ -355,7 +436,7 @@ function Voiceovers() {
 
                         <div className='h-full flex flex-col gap-y-3 sm:gap-y-0 xl:h-[20rem] 2xl:h-[30rem] relative scriptList overflow-hidden overflow-y-scroll '>
                             {scripts.map((script, index) => (
-                                <ScriptComponent key={index} script={script} fieldValue={fieldValue} setFieldValue={setFieldValue} toggleComplete={toggleComplete} delteScript={deleteScript} handlePersonalScripts={handlePersonalScripts} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} moveToZishan={moveToZishan} moveToSakina={moveToSakina} moveToHussein={moveToHussein} />
+                                <ScriptComponent moveToAlex={moveToAlex} moveToMeri={moveToMeri} moveToDanyal={moveToDanyal} key={index} script={script} fieldValue={fieldValue} setFieldValue={setFieldValue} toggleComplete={toggleComplete} delteScript={deleteScript} handlePersonalScripts={handlePersonalScripts} moveToUGC={moveToUGC} moveToVideoediting={moveToVideoediting} moveToVoiceovers={moveToVoiceovers} moveToZishan={moveToZishan} moveToSakina={moveToSakina} moveToHussein={moveToHussein} />
                             ))}
                         </div>
                     </div>

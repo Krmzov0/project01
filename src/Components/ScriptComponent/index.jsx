@@ -4,7 +4,7 @@ import './style.css'
 import { Tooltip } from 'flowbite-react'
 import { motion } from 'framer-motion'
 
-function ScriptComponent({ script, delteScript, handlePersonalScripts, toggleComplete, moveToUGC, moveToVoiceovers, handleAttachVideoLink, handleAttachUGCVideoLink, handleAttachVoiceoverLink, moveToVideoediting, moveToZishan, moveToSakina, moveToHussein }) {
+function ScriptComponent({ script, delteScript, handlePersonalScripts, toggleComplete, moveToUGC, moveToAlex, moveToMeri, moveToDanyal, moveToVoiceovers, handleAttachVideoLink, handleAttachUGCVideoLink, handleAttachVoiceoverLink, moveToVideoediting, moveToZishan, moveToSakina, moveToHussein }) {
 
     const [sendMenu, setsendMenu] = useState(false)
 
@@ -76,6 +76,12 @@ function ScriptComponent({ script, delteScript, handlePersonalScripts, toggleCom
                                         <button onClick={() => moveToZishan(script.id)} className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Zishan</button>
                                         <button onClick={() => moveToSakina(script.id)} className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Sakina</button>
                                         <button onClick={() => moveToHussein(script.id)} className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Hussein</button>
+                                    </div>
+
+                                    <div className='flex items-center gap-x-2'>
+                                        <button onClick={() => moveToAlex(script.id)} className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Alex</button>
+                                        <button onClick={() => moveToMeri(script.id)} className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Meri</button>
+                                        <button onClick={() => moveToDanyal(script.id)} className='px-2 py-2 flex w-32 justify-center items-center border-[#FDCA40] border-2 rounded-lg text-[#dbdbdb]'>Danyal</button>
                                     </div>
                                 </div>
                             </div> </motion.div>)}

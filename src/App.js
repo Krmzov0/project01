@@ -14,6 +14,10 @@ import Signin from './Pages/Signin';
 import Hussein from './Pages/Hussein'
 import Zishan from './Pages/Zishan'
 import Sakina from './Pages/Sakina'
+import Footer from './Components/Footer';
+import Alex from './Pages/Alex'
+import Meri from './Pages/Meri'
+import Danyal from './Pages/Danyal'
 
 function App() {
 
@@ -34,11 +38,15 @@ function App() {
             <Route path='/ad-launch/zishan' element={<Zishan />} />
             <Route path='/ad-launch/sakina' element={<Sakina />} />
             <Route path='/ad-launch/hussein' element={<Hussein />} />
+            <Route path='/ad-launch/alex' element={<Alex />} />
+            <Route path='/ad-launch/meri' element={<Meri />} />
+            <Route path='/ad-launch/danyal' element={<Danyal />} />
             <Route path='/create-script' element={<CreateSript />} />
             <Route path='/account' element={<Account />} />
             <Route path='/signin' element={<Signin />} />
           </Routes>
         </AuthContextProvider>
+        <Footer />
       </div> : <Signin />}
     </>
   );
